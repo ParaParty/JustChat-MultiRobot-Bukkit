@@ -1,0 +1,12 @@
+name: VexRobot
+author: endymx
+description: 与你的机器人互连
+main: cn.endymx.multirobot.LoadClass
+version: 1.1.0
+depend: [VexView]
+
+commands:
+  getimage:
+    description: 获取一个图片并显示
+  reload:
+    description: 重新加载插件配置文件
