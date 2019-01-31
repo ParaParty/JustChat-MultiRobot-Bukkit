@@ -69,7 +69,10 @@ public class LoadClass extends JavaPlugin implements Listener{
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         switch(command.getName().toLowerCase()){
             case "getimage":
-                if(vv) VexViewAPI.sendHUD((Player) sender, new VexImageShow(1, args[0], 80, 100, 80, 100, 50, 50, 3), config.getDouble("imageX"), config.getDouble("imageY"));
+                int x = Integer.parseInt(args[1]);
+                int y = Integer.parseInt(args[2]);
+                double[] xy = zoomImage(x, y);
+                if(vv) VexViewAPI.sendHUD((Player) sender, new VexImageShow(1, args[0], 100, 100, x, y, (int) xy[0], (int) xy[1], 3), config.getDouble("imageX"), config.getDouble("imageY"));
                 break;
             case "reload":
                 reloadConfig();
@@ -77,5 +80,13 @@ public class LoadClass extends JavaPlugin implements Listener{
                 break;
         }
         return true;
+    }
+
+    private double[] zoomImage(double x, double y){
+        while (y > 50){
+            x = x * 0.9;
+            y = y * 0.9;
+        }
+        return new double[]{x, y};
     }
 }

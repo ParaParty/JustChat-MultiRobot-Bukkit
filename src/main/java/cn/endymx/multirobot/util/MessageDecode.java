@@ -17,6 +17,7 @@ public class MessageDecode {
     public  MessageDecode(String data, LoadClass plugin) {
         this.data = data;
         this.plugin = plugin;
+        plugin.getLogger().info(data);
     }
 
     public void decodeData(){
@@ -54,9 +55,9 @@ public class MessageDecode {
                                             break;
                                         case "CQ:image":
                                             TextComponent image = new TextComponent(MessageTools.Base64Decode(msg.getString("content")));
-                                            if (plugin.vv) image.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,  "/getimage " + msg.getString("url")));
-                                            image.setColor(ChatColor.BLUE);
-                                            image.setUnderlined(true);
+                                            if (plugin.vv) image.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,  "/getimage " + msg.getString("url") + " " + msg.getInt("width") + " " + msg.getInt("height")));
+                                            if (plugin.vv) image.setColor(ChatColor.BLUE);
+                                            if (plugin.vv) image.setUnderlined(true);
                                             bc.addExtra(image);
                                             break;
                                     }

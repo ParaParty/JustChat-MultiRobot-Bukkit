@@ -25,7 +25,7 @@ public class ChatPacker extends Packer implements ISendable {
         chatMessage.put("sender", MessageTools.Base64Encode(event.getPlayer().getName()));
         HashMap<String, String> chatArray = new HashMap<>();
         chatArray.put("type", "text");
-        chatArray.put("content", ChatColor.stripColor(MessageTools.Base64Encode(event.getMessage())));
+        chatArray.put("content", MessageTools.Base64Encode(ChatColor.stripColor(event.getMessage())));
         chatMessage.put("content", new JSONArray().put(chatArray));
         return chatMessage.toString();
     }

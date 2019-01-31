@@ -16,7 +16,7 @@ public class InfoPacker extends Packer implements ISendable {
         JSONObject pingMessage = new JSONObject();
         pingMessage.put("version", PackVersion);
         pingMessage.put("type", MessagePackType.INFO);
-        pingMessage.put("content", ChatColor.stripColor(MessageTools.Base64Encode(message)));
+        pingMessage.put("content", MessageTools.Base64Encode(ChatColor.stripColor(message)));
         return pingMessage.toString();
     }
 }
