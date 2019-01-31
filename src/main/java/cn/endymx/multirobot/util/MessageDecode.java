@@ -17,7 +17,6 @@ public class MessageDecode {
     public  MessageDecode(String data, LoadClass plugin) {
         this.data = data;
         this.plugin = plugin;
-        plugin.getLogger().info(data);
     }
 
     public void decodeData(){
@@ -37,7 +36,7 @@ public class MessageDecode {
                     case MessagePackType.CHAT:
                         String world = MessageTools.Base64Decode(json.getString("world_display"));
                         String sender = MessageTools.Base64Decode(json.getString("sender"));
-                        TextComponent bc = new TextComponent("[" + world + "]" + "<" + sender + "> ");//
+                        TextComponent bc = new TextComponent(plugin.config.getString("messageFormQQ").replace("%world%", world).replace("%player%", sender));
                         JSONArray mjson = json.getJSONArray("content");
                         for (int i = 0; i < mjson.length(); i ++) {
                             JSONObject msg = mjson.getJSONObject(i);

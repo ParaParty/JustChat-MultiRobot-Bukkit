@@ -4,9 +4,7 @@ import cn.endymx.multirobot.packer.ChatPacker;
 import cn.endymx.multirobot.packer.InfoPacker;
 import cn.endymx.multirobot.socket.SocketClient;
 
-import lk.vexview.VexView;
-import lk.vexview.api.VexViewAPI;
-import lk.vexview.hud.VexImageShow;
+import cn.endymx.multirobot.vexview.VexView;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -38,13 +36,15 @@ public class LoadClass extends JavaPlugin implements Listener{
         getServer().getPluginManager().registerEvents(this, this);
         client = new SocketClient(config.getString("serverIP"), config.getInt("serverPort"), this);
         client.run();
-        if(config.getBoolean("useVexView") && Bukkit.getPluginManager().getPlugin("VexView") != null && (VexView.getInstance().getVersion().startsWith("1.8") || VexView.getInstance().getVersion().startsWith("1.9"))) {
+        if(!config.getBoolean("useVexView")){
+            getLogger().info("配置文件中已关闭显示图片功能");
+        }else if(Bukkit.getPluginManager().getPlugin("VexView") != null) {
             vv = true;
             getLogger().info("检测到VexView插件，开启显示图片功能");
         }else{
             getLogger().info("未检测到VexView插件|VexView插件版本过低，已关闭显示图片功能");
         }
-        getLogger().info("欢迎使用本插件，当前版本v1.1.0");
+        getLogger().info("欢迎使用本插件，当前版本v1.1.2");
     }
 
     public void onDisable() {
@@ -72,7 +72,8 @@ public class LoadClass extends JavaPlugin implements Listener{
                 int x = Integer.parseInt(args[1]);
                 int y = Integer.parseInt(args[2]);
                 double[] xy = zoomImage(x, y);
-                if(vv) VexViewAPI.sendHUD((Player) sender, new VexImageShow(1, args[0], 100, 100, x, y, (int) xy[0], (int) xy[1], 3), config.getDouble("imageX"), config.getDouble("imageY"));
+                if(vv) new VexView().sendHUD((Player) sender, 1, args[0], 100, 100, x, y, (int) xy[0], (int) xy[1], 3, config.getDouble("imageX"), config.getDouble("imageY"));
+                //new VexGifImage()
                 break;
             case "reload":
                 reloadConfig();

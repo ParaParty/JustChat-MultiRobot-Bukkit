@@ -29,7 +29,7 @@
         <artifactId>vexview</artifactId>
         <version>1.9.5</version>
         <scope>system</scope>
-        <systemPath>${project.basedir}/lib/VexView1.9.5.jar</systemPath>
+        <systemPath>${project.basedir}/lib/VexView1.9.7.jar</systemPath>
         </dependency>
     </dependencies>
 

@@ -18,7 +18,7 @@ serverPulse: 20
 ############### 扩展插件 ##################
 #是否使用VexView插件来显示图片
 #需要付费版的VexView才能使用
-useVexView: true
+useVexView: false
 
 #收到图片时显示在屏幕的位置x
 #需要VexView插件支持
