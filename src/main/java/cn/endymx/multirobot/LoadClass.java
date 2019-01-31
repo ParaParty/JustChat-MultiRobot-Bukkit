@@ -38,11 +38,11 @@ public class LoadClass extends JavaPlugin implements Listener{
         client.run();
         if(!config.getBoolean("useVexView")){
             getLogger().info("配置文件中已关闭显示图片功能");
-        }else if(Bukkit.getPluginManager().getPlugin("VexView") != null) {
+        }else if(Bukkit.getPluginManager().getPlugin("VexView") != null && Bukkit.getPluginManager().getPlugin("VexView").isEnabled() && Double.parseDouble(VexView.getVersion().substring(0, 3) + VexView.getVersion().substring(4)) >= 1.97) {
             vv = true;
             getLogger().info("检测到VexView插件，开启显示图片功能");
         }else{
-            getLogger().info("未检测到VexView插件|VexView插件版本过低，已关闭显示图片功能");
+            getLogger().info("未检测到VexView插件|VexView插件非最新版，已关闭显示图片功能");
         }
         getLogger().info("欢迎使用本插件，当前版本v1.1.2");
     }
@@ -73,7 +73,7 @@ public class LoadClass extends JavaPlugin implements Listener{
                 int y = Integer.parseInt(args[2]);
                 double[] xy = zoomImage(x, y);
                 if(vv) new VexView().sendHUD((Player) sender, 1, args[0], 100, 100, x, y, (int) xy[0], (int) xy[1], 3, config.getDouble("imageX"), config.getDouble("imageY"));
-                //new VexGifImage()
+                //
                 break;
             case "reload":
                 reloadConfig();
