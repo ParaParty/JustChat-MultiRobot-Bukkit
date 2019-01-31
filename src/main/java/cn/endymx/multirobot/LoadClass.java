@@ -38,7 +38,7 @@ public class LoadClass extends JavaPlugin implements Listener{
         client.run();
         if(!config.getBoolean("useVexView")){
             getLogger().info("配置文件中已关闭显示图片功能");
-        }else if(Bukkit.getPluginManager().getPlugin("VexView") != null && Bukkit.getPluginManager().getPlugin("VexView").isEnabled() && Double.parseDouble(VexView.getVersion().substring(0, 3) + VexView.getVersion().substring(4)) >= 1.97) {
+        }else if(Bukkit.getPluginManager().getPlugin("VexView") != null && Bukkit.getPluginManager().getPlugin("VexView").isEnabled() && Double.parseDouble(VexView.getVersion().substring(0, 3) + VexView.getVersion().substring(4)) >= 1.8) {
             vv = true;
             getLogger().info("检测到VexView插件，开启显示图片功能");
         }else{
