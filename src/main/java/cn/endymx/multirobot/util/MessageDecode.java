@@ -54,7 +54,7 @@ public class MessageDecode {
                                             break;
                                         case "CQ:image":
                                             TextComponent image = new TextComponent(MessageTools.Base64Decode(msg.getString("content")));
-                                            if (plugin.vv) image.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,  "/getimage " + msg.getString("url") + " " + msg.getInt("width") + " " + msg.getInt("height")));
+                                            if (plugin.vv) image.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,  "/getimage " + msg.getString("url") + " " + msg.getInt("width") + " " + msg.getInt("height") + " " + (msg.getString("extension").equals("gif") ? 1 : 0)));
                                             if (plugin.vv) image.setColor(ChatColor.BLUE);
                                             if (plugin.vv) image.setUnderlined(true);
                                             bc.addExtra(image);

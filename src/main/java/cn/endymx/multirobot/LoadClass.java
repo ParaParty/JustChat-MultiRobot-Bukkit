@@ -12,6 +12,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -44,7 +45,7 @@ public class LoadClass extends JavaPlugin implements Listener{
         }else{
             getLogger().info("未检测到VexView插件|VexView插件非最新版，已关闭显示图片功能");
         }
-        getLogger().info("欢迎使用本插件，当前版本v1.1.2");
+        getLogger().info("欢迎使用本插件，当前版本v1.1.3");
     }
 
     public void onDisable() {
@@ -66,14 +67,18 @@ public class LoadClass extends JavaPlugin implements Listener{
         client.clientManager.send(new InfoPacker(event.getQuitMessage()));
     }
 
+    @EventHandler
+    public void onDeath(PlayerDeathEvent event){
+        client.clientManager.send(new InfoPacker(event.getDeathMessage()));
+    }
+
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         switch(command.getName().toLowerCase()){
             case "getimage":
                 int x = Integer.parseInt(args[1]);
                 int y = Integer.parseInt(args[2]);
                 double[] xy = zoomImage(x, y);
-                if(vv) new VexView().sendHUD((Player) sender, 1, args[0], 100, 100, x, y, (int) xy[0], (int) xy[1], 3, config.getDouble("imageX"), config.getDouble("imageY"));
-                //
+                if(vv) new VexView().sendHUD((Player) sender, 1, args[0], 100, 100, x, y, (int) xy[0], (int) xy[1], 3, config.getDouble("imageX"), config.getDouble("imageY"), args[3]);
                 break;
             case "reload":
                 reloadConfig();
@@ -84,7 +89,7 @@ public class LoadClass extends JavaPlugin implements Listener{
     }
 
     private double[] zoomImage(double x, double y){
-        while (y > 50){
+        while (y > 60){
             x = x * 0.9;
             y = y * 0.9;
         }
