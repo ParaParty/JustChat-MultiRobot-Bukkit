@@ -27,9 +27,9 @@
         <dependency>
         <groupId>lk.vexview</groupId>
         <artifactId>vexview</artifactId>
-        <version>1.9.5</version>
+        <version>1.9.10</version>
         <scope>system</scope>
-        <systemPath>${project.basedir}/lib/VexView1.9.7.jar</systemPath>
+        <systemPath>${project.basedir}/lib/VexView1.9.10.jar</systemPath>
         </dependency>
     </dependencies>
 
