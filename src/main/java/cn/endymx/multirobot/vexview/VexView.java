@@ -5,10 +5,9 @@ import lk.vexview.api.VexViewAPI;
 import lk.vexview.gui.components.expand.VexGifImage;
 import lk.vexview.hud.VexImageShow;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 
 
-public class VexView implements Listener {
+public class VexView{
 
     private LoadClass plugin;
 

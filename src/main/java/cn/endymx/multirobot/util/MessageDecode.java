@@ -59,6 +59,25 @@ public class MessageDecode {
                                             if (plugin.vv) image.setUnderlined(true);
                                             bc.addExtra(image);
                                             break;
+                                        case "CQ:hb":
+                                            TextComponent hb = new TextComponent("[红包:" + MessageTools.Base64Decode(msg.getString("title") + "]"));
+                                            hb.setColor(ChatColor.RED);
+                                            bc.addExtra(hb);
+                                            break;
+                                        case "CQ:rich"://TODO: XML信息可能会URL为空
+                                            TextComponent rich = new TextComponent(MessageTools.Base64Decode(msg.getString("text")));
+                                            rich.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, MessageTools.Base64Decode(msg.getString("url"))));
+                                            rich.setColor(ChatColor.BLUE);
+                                            rich.setUnderlined(true);
+                                            bc.addExtra(rich);
+                                            break;
+                                        case "CQ:share":
+                                            TextComponent share = new TextComponent(MessageTools.Base64Decode("[分享] " + msg.getString("title")));
+                                            share.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, MessageTools.Base64Decode(msg.getString("url"))));
+                                            share.setColor(ChatColor.BLUE);
+                                            share.setUnderlined(true);
+                                            bc.addExtra(share);
+                                            break;
                                     }
                                     break;
                             }

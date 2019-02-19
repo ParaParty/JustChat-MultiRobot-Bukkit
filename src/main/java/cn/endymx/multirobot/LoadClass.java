@@ -1,9 +1,11 @@
 package cn.endymx.multirobot;
 
+import cn.endymx.multirobot.api.robotAPI;
 import cn.endymx.multirobot.packer.ChatPacker;
 import cn.endymx.multirobot.packer.InfoPacker;
 import cn.endymx.multirobot.socket.SocketClient;
 
+import cn.endymx.multirobot.util.MessagePackType;
 import cn.endymx.multirobot.vexview.VexView;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -28,8 +30,9 @@ public class LoadClass extends JavaPlugin implements Listener{
     public SocketClient client;
     public boolean vv = false;
     public FileConfiguration config;
+    public robotAPI api = null;
     private int id = 0;
-    public HashMap<Integer, String> url = new HashMap<>();
+    private HashMap<Integer, String> url = new HashMap<>();
 
     public void onLoad(){
         saveDefaultConfig();
@@ -38,6 +41,7 @@ public class LoadClass extends JavaPlugin implements Listener{
 
     public void onEnable() {
         getLogger().info("加载中...");
+        api = new robotAPI(this);
         getServer().getPluginManager().registerEvents(this, this);
         client = new SocketClient(config.getString("serverIP"), config.getInt("serverPort"), this);
         client.run();
@@ -64,17 +68,17 @@ public class LoadClass extends JavaPlugin implements Listener{
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
-        client.clientManager.send(new InfoPacker(event.getJoinMessage()));
+        client.clientManager.send(new InfoPacker(event.getPlayer().getName(), MessagePackType.INFO_Join, event.getJoinMessage()));
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event){
-        client.clientManager.send(new InfoPacker(event.getQuitMessage()));
+        client.clientManager.send(new InfoPacker(event.getPlayer().getName(), MessagePackType.INFO_Quit, event.getQuitMessage()));
     }
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event){
-        client.clientManager.send(new InfoPacker(event.getDeathMessage()));
+        client.clientManager.send(new InfoPacker(event.getEntity().getPlayer().getName(), MessagePackType.INFO_Death, event.getDeathMessage()));
     }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
