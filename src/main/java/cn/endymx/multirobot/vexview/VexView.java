@@ -9,10 +9,10 @@ import org.bukkit.entity.Player;
 
 public class VexView{
 
-    private LoadClass plugin;
+    private static LoadClass plugin;
 
     public VexView(LoadClass plugin){
-        this.plugin = plugin;
+        VexView.plugin = plugin;
     }
 
     public static String getVersion(){
@@ -22,14 +22,14 @@ public class VexView{
     public static void sendHUD(Player player, int id, String url, int x, int y, int w, int h, int time, double xs, double ys, String mode){
         double[] xy = zoomImage(w, h);
         if (mode.equals("0")) {
-            VexViewAPI.sendHUD(player, new VexImageShow(id, url, x, y, (int) xy[1], (int) xy[0], 1000, 1000, time), xs, ys);
+            VexViewAPI.sendHUD(player, new VexImageShow(id, url, x, y, (int) xy[1], (int) xy[0], (int) xy[1], (int) xy[0], time), xs, ys);
         }else{
-            VexViewAPI.sendHUD(player, new VexImageShow(id, new VexGifImage(url, x, y, (int) xy[1], (int) xy[0], 1000, 1000), time), xs, ys);
+            VexViewAPI.sendHUD(player, new VexImageShow(id, new VexGifImage(url, x, y, (int) xy[1], (int) xy[0], (int) xy[1], (int) xy[0]), time), xs, ys);
         }
     }
 
     private static double[] zoomImage(double x, double y){
-        while (!(x < 60) && !(y < 60)){
+        while (!(x < plugin.config.getInt("imageBigX")) && !(y < plugin.config.getInt("imageBigY"))){
             x = x * 0.9;
             y = y * 0.9;
         }
