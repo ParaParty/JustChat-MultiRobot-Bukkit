@@ -104,7 +104,7 @@
                     <outjar>classes-autotest.jar</outjar>
                     <!-- 添加依赖，这里你可以按你的需要修改，这里测试只需要一个JRE的Runtime包就行了 -->
                     <libs>
-                        <lib>${project.basedir}/lib/Contigo-1.7.10-1614.UNOFFICIAL-server.jar</lib>
+                        <!--<lib>${project.basedir}/lib/Contigo-1.7.10-1614.UNOFFICIAL-server.jar</lib>-->
                         <lib>${project.basedir}/lib/VexView2.0.3.jar</lib>
                     </libs>
                     <!-- 对什么东西进行加载，这里仅有classes成功，毕竟你也不可能对配置文件及JSP混淆吧-->
