@@ -7,7 +7,7 @@
     <groupId>cn.endymx</groupId>
     <artifactId>MultiRobot</artifactId>
     <name>MultiRobot</name>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 
 
     <properties>
@@ -99,13 +99,13 @@
                         <option>-keep class com.xuhao.didi.* { *; }</option>
                         <!--<option>-keep class org.json.* { *; }</option>-->
 
-                        <!--<option>-keep public class * { public protected *; }</option>-->
+                        <option>-keep public class * { public protected *; }</option>
 
-                        <option>-ignorewarnings</option>
-                        <option>-dontwarn **</option>
+                        <!--<option>-ignorewarnings</option>
+                        <option>-dontwarn **</option>-->
                     </options>
                     <!--class 混淆后输出的jar包-->
-                    <outjar>MultiRobot_proguard.jar</outjar>
+                    <outjar>MultiRobot-pg.jar</outjar>
                     <!-- 添加依赖，这里你可以按你的需要修改，这里测试只需要一个JRE的Runtime包就行了 -->
                     <libs>
                         <lib>${java.home}/lib/rt.jar</lib>
