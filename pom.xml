@@ -112,6 +112,15 @@
                     <!-- 输出目录-->
                     <outputDirectory>${project.build.directory}</outputDirectory>
                 </configuration>
+                <dependencies>
+                    <!-- 使用6.0.2版本来混淆 -->
+                    <dependency>
+                        <groupId>net.sf.proguard</groupId>
+                        <artifactId>proguard-base</artifactId>
+                        <version>6.0.2</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
