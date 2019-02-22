@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
+    <!--<dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
@@ -25,13 +25,13 @@
             <systemPath>${project.basedir}/libs/Contigo-1.7.10-1614.UNOFFICIAL-server.jar</systemPath>
         </dependency>
         <dependency>
-        <groupId>lk.vexview</groupId>
-        <artifactId>vexview</artifactId>
-        <version>2.0.3</version>
-        <scope>system</scope>
-        <systemPath>${project.basedir}/libs/VexView2.0.3.jar</systemPath>
+            <groupId>lk.vexview</groupId>
+            <artifactId>vexview</artifactId>
+            <version>2.0.3</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/VexView2.0.3.jar</systemPath>
         </dependency>
-    </dependencies>
+    </dependencies>-->
 
     <packaging>jar</packaging>
     <build>
@@ -103,13 +103,15 @@
                         <option>-keep class com.google.* { *; }</option>
 
                         <option>-ignorewarnings</option>
+                        <option>-dontwarn **</option>
 
                     </options>
                     <!--class 混淆后输出的jar包-->
                     <outjar>classes-autotest.jar</outjar>
                     <!-- 添加依赖，这里你可以按你的需要修改，这里测试只需要一个JRE的Runtime包就行了 -->
                     <libs>
-                        <!--<lib>${project.basedir}/lib/Contigo-1.7.10-1614.UNOFFICIAL-server.jar</lib>-->
+                        <lib>${project.basedir}/lib/Contigo-1.7.10-1614.UNOFFICIAL-server.jar</lib>
+                        <lib>${project.basedir}/libs/VexView2.0.3.jar</lib>
                     </libs>
                     <!-- 对什么东西进行加载，这里仅有classes成功，毕竟你也不可能对配置文件及JSP混淆吧-->
                     <injar>classes</injar>
