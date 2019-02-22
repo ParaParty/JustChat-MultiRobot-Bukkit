@@ -90,33 +90,27 @@
                         <!-- 确定统一的混淆类的成员名称来增加混淆-->
                         <option>-useuniqueclassmembernames</option>
                         <!-- 不混淆所有包名-->
-                        <!--<option>-keeppackagenames</option>-->
+                        <option>-keeppackagenames</option>
                         <!-- 需要保持的属性：异常，注解等-->
-                        <option>-keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LocalVariable*Table,*Annotation*,Synthetic,EnclosingMethod</option>
+                        <!--<option>-keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LocalVariable*Table,*Annotation*,Synthetic,EnclosingMethod</option>-->
                         <!-- 不混淆所有的set/get方法->
                         <!-<option>-keepclassmembers public class * {void set*(***);*** get*();}</option>-->
                         <!-- 不混淆包下的所有类名，且类中的方法也不混淆-->
                         <option>-keep class com.xuhao.didi.* { *; }</option>
-                        <option>-keep class org.json.* { *; }</option>
-                        <option>-keep class guava10.* { *; }</option>
-                        <option>-keep class guava17.* { *; }</option>
-                        <option>-keep class com.google.* { *; }</option>
+                        <!--<option>-keep class org.json.* { *; }</option>-->
 
                         <option>-keep public class * { public protected *; }</option>
 
                         <option>-ignorewarnings</option>
                         <option>-dontwarn **</option>
-
                     </options>
                     <!--class 混淆后输出的jar包-->
-                    <outjar>classes-autotest.jar</outjar>
+                    <outjar>MultiRobot-proguard.jar</outjar>
                     <!-- 添加依赖，这里你可以按你的需要修改，这里测试只需要一个JRE的Runtime包就行了 -->
                     <libs>
-                        <!--<lib>${project.basedir}/lib/Contigo-1.7.10-1614.UNOFFICIAL-server.jar</lib>
-                        <lib>${project.basedir}/libs/VexView2.0.3.jar</lib>-->
                         <lib>${java.home}/lib/rt.jar</lib>
                     </libs>
-                <!-- 对什么东西进行加载，这里仅有classes成功，毕竟你也不可能对配置文件及JSP混淆吧-->
+                    <!-- 对什么东西进行加载，这里仅有classes成功，毕竟你也不可能对配置文件及JSP混淆吧-->
                     <injar>classes</injar>
                     <!-- 输出目录-->
                     <outputDirectory>${project.build.directory}</outputDirectory>
