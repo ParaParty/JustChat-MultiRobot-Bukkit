@@ -20,9 +20,9 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.7.10</version>
+            <version>1.12.2</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/Contigo-1.7.10-1614.UNOFFICIAL-server.jar</systemPath>
+            <systemPath>${project.basedir}/libs/1.12.2.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>lk.vexview</groupId>
@@ -102,6 +102,8 @@
                         <option>-keep class guava17.* { *; }</option>
                         <option>-keep class com.google.* { *; }</option>
 
+                        <option>-keep public class * { public protected *; }</option>
+
                         <option>-ignorewarnings</option>
                         <option>-dontwarn **</option>
 
@@ -112,7 +114,8 @@
                     <libs>
                         <!--<lib>${project.basedir}/lib/Contigo-1.7.10-1614.UNOFFICIAL-server.jar</lib>
                         <lib>${project.basedir}/libs/VexView2.0.3.jar</lib>-->
-                </libs>
+                        <lib>${java.home}/lib/rt.jar</lib>
+                    </libs>
                 <!-- 对什么东西进行加载，这里仅有classes成功，毕竟你也不可能对配置文件及JSP混淆吧-->
                     <injar>classes</injar>
                     <!-- 输出目录-->
