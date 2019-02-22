@@ -98,6 +98,9 @@
                         <!-- 不混淆包下的所有类名，且类中的方法也不混淆-->
                         <option>-keep class com.xuhao.didi.* { *; }</option>
                         <option>-keep class org.json.* { *; }</option>
+                        <option>-keep class guava10.* { *; }</option>
+                        <option>-keep class guava17.* { *; }</option>
+                        <option>-keep class com.google.* { *; }</option>
 
                         <option>-ignorewarnings</option>
 
