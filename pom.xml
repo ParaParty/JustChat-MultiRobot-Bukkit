@@ -99,6 +99,8 @@
                         <option>-keep class com.xuhao.didi.* { *; }</option>
                         <option>-keep class org.json.* { *; }</option>
 
+                        <option>-ignorewarnings</option>
+
                     </options>
                     <!--class 混淆后输出的jar包-->
                     <outjar>classes-autotest.jar</outjar>
