@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!--<dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
@@ -31,7 +31,7 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/VexView2.0.3.jar</systemPath>
         </dependency>
-    </dependencies>-->
+    </dependencies>
 
     <packaging>jar</packaging>
     <build>
