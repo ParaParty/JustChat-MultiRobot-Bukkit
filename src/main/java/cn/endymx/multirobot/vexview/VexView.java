@@ -21,10 +21,10 @@ public class VexView{
 
     public static void sendHUD(Player player, int id, String url, int x, int y, int w, int h, int time, double xs, double ys, String mode){
         double[] xy = zoomImage(w, h);
-        if (mode.equals("0")) {
-            VexViewAPI.sendHUD(player, new VexImageShow(id, url, x, y, (int) xy[1], (int) xy[0], (int) xy[1], (int) xy[0], time), xs, ys);
-        }else{
+        if (mode.equals("gif")) {
             VexViewAPI.sendHUD(player, new VexImageShow(id, new VexGifImage(url, x, y, (int) xy[1], (int) xy[0], (int) xy[1], (int) xy[0]), time), xs, ys);
+        }else{
+            VexViewAPI.sendHUD(player, new VexImageShow(id, url, x, y, (int) xy[1], (int) xy[0], (int) xy[1], (int) xy[0], time), xs, ys);
         }
     }
 
