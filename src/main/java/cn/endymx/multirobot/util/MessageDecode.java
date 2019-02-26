@@ -1,6 +1,7 @@
 package cn.endymx.multirobot.util;
 
 import cn.endymx.multirobot.LoadClass;
+import cn.endymx.multirobot.packer.CMDPacker;
 import cn.endymx.multirobot.packer.Packer;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -91,6 +92,13 @@ public class MessageDecode {
                         }
                         for(Player player : plugin.getServer().getOnlinePlayers()){
                             player.spigot().sendMessage(bc);
+                        }
+                        break;
+                    case MessagePackType.CMD_List:
+                        if(json.getInt("subtype") == 0){
+                            plugin.client.clientManager.send(new CMDPacker(1, plugin.getServer().getOnlinePlayers()));
+                        }else{
+                            plugin.getLogger().info("收到类型无法识别的消息");
                         }
                         break;
                     default:
