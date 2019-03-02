@@ -10,16 +10,17 @@ import java.util.Collection;
 
 public class CMDPacker extends Packer implements ISendable {
 
-    public CMDPacker(int count, Collection<? extends Player> players){
-        super(getMsg(count, players));
+    public CMDPacker(int max, Collection<? extends Player> players){
+        super(getMsg(max, players));
     }
 
-    private static String getMsg(int count, Collection<? extends Player> players){
+    private static String getMsg(int max, Collection<? extends Player> players){
         JSONObject CMDMessage = new JSONObject();
         CMDMessage.put("version", PackVersion);
         CMDMessage.put("type", MessagePackType.CMD_List);
         CMDMessage.put("subtype", 1);
-        CMDMessage.put("count", count);
+        CMDMessage.put("max", max);
+        CMDMessage.put("count", players.size());
         String[] msg = new String[players.size()];
         int i = 0;
         for (Player player : players) {

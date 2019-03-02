@@ -96,7 +96,7 @@ public class MessageDecode {
                         break;
                     case MessagePackType.CMD_List:
                         if(json.getInt("subtype") == 0){
-                            plugin.client.clientManager.send(new CMDPacker(1, plugin.getServer().getOnlinePlayers()));
+                            plugin.client.clientManager.send(new CMDPacker(plugin.getServer().getMaxPlayers(), plugin.getServer().getOnlinePlayers()));
                         }else{
                             plugin.getLogger().info("收到类型无法识别的消息");
                         }
