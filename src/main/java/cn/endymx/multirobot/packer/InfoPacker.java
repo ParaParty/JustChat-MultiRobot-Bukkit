@@ -17,7 +17,7 @@ public class InfoPacker extends Packer implements ISendable {
         infoMessage.put("version", PackVersion);
         infoMessage.put("type", MessagePackType.INFO);
         infoMessage.put("sender", MessageTools.Base64Encode(sender));
-        infoMessage.put("event", MessageTools.Base64Encode("" + event));
+        infoMessage.put("event", event);
         infoMessage.put("content", MessageTools.Base64Encode(ChatColor.stripColor(message)));
         return infoMessage.toString();
     }
