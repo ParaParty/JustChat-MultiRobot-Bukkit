@@ -24,7 +24,7 @@ public class CMDPacker extends Packer implements ISendable {
         String[] msg = new String[players.size()];
         int i = 0;
         for (Player player : players) {
-            msg[i] = MessageTools.Base64Encode(player.getName());
+            msg[i] = MessageTools.Base64Encode(player.getPlayerListName());
         }
         CMDMessage.put("playerlist", msg);
         return CMDMessage.toString();
