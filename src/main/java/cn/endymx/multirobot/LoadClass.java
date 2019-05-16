@@ -8,6 +8,7 @@ import cn.endymx.multirobot.socket.SocketClient;
 import cn.endymx.multirobot.util.MessagePackType;
 import cn.endymx.multirobot.vexview.VexView;
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -91,6 +92,11 @@ public class LoadClass extends JavaPlugin implements Listener{
             case "reload":
                 reloadConfig();
                 config = getConfig();
+                client.clientManager.disconnect();
+                sender.sendMessage(Color.YELLOW + "更新配置文件并重启通讯中...");
+                client = new SocketClient(config.getString("serverIP"), config.getInt("serverPort"), this);
+                client.run();
+                sender.sendMessage(Color.GREEN + "重启完毕，等待连接到服务器");
                 break;
         }
         return true;
