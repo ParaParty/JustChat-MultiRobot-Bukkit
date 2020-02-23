@@ -8,7 +8,7 @@ import java.nio.charset.Charset;
 
 public class Packer {
     private final static byte[] MessageHeader = {0x11,0x45,0x14};
-    public static int PackVersion = 3;
+    public static int PackVersion = 4;
     private String MSG;
 
     Packer(String MSG){

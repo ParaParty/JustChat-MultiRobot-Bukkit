@@ -55,16 +55,16 @@ public class MessageDecode {
                                             break;
                                         case "CQ:image":
                                             TextComponent image = new TextComponent(MessageTools.Base64Decode(msg.getString("content")));
-                                            if (plugin.vv) image.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,  "/getimage " + msg.getString("url") + " " + msg.getInt("width") + " " + msg.getInt("height") + " " + msg.getString("extension")));
-                                            image.setColor(ChatColor.BLUE);
-                                            if (plugin.vv) image.setUnderlined(true);
-                                            bc.addExtra(image);
+                                            //if (plugin.vv) image.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,  "/getimage " + msg.getString("url") + " " + msg.getInt("width") + " " + msg.getInt("height") + " " + msg.getString("extension")));
+                                                image.setColor(ChatColor.BLUE);
+                                            //if (plugin.vv) image.setUnderlined(true);
+                                                bc.addExtra(image);
                                             break;
                                         case "CQ:face":
                                             TextComponent face = new TextComponent("[表情:" + MessageTools.Base64Decode(msg.getString("content")) + "]");
-                                            if (plugin.vv) face.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,  "/getimage [local]face/" + msg.getInt("id") + "." + msg.getString("extension") + " " + 28 + " " + 28 + " " + msg.getString("extension")));
+                                            //if (plugin.vv) face.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,  "/getimage [local]face/" + msg.getInt("id") + "." + msg.getString("extension") + " " + 28 + " " + 28 + " " + msg.getString("extension")));
                                             face.setColor(ChatColor.YELLOW);
-                                            if (plugin.vv) face.setUnderlined(true);
+                                            //if (plugin.vv) face.setUnderlined(true);
                                             bc.addExtra(face);
                                             break;
                                         case "CQ:hb":
