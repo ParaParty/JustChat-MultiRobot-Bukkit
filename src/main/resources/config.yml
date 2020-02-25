@@ -3,8 +3,8 @@
 #本地请使用127.0.0.1
 serverIP: "127.0.0.1"
 
-#服务器端口，默认8282
-serverPort: 8282
+#服务器端口，默认 38440
+serverPort: 38440
 
 #服务器名称
 serverName: "Bukkit"
