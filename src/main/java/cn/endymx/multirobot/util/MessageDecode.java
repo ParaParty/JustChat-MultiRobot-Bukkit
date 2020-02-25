@@ -171,14 +171,15 @@ public class MessageDecode {
 
             TextComponent partText = new TextComponent();
             try {
-                InetAddress address = InetAddress.getByName(IDN.toASCII(nowUrl.getHost()));
+                String asciiUrl = IDN.toASCII(nowUrl.getHost());
+                InetAddress address = InetAddress.getByName(asciiUrl);
                 String url = nowUrl.toString();
 
                 partText = new TextComponent(part);
                 partText.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, url));
                 partText.setColor(ChatColor.BLUE);
                 partText.setUnderlined(true);
-            } catch (UnknownHostException e) {
+            } catch (Exception e) {
                 partText = new TextComponent(part);
             }
 
