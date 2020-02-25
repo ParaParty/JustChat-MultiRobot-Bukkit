@@ -9,6 +9,10 @@ serverPort: 8282
 #服务器名称
 serverName: "Bukkit"
 
+#服务器身份
+#生成器： https://1024tools.com/uuid https://www.uuidgenerator.net/
+ID: "00000000-0000-0000-0000-000000000000"
+
 #-----------开发设置----------#
 #！！！非必要请勿改动！！！
 #服务器心跳速度（秒）

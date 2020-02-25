@@ -3,14 +3,14 @@ package com.xuhao.didi.core.iocore.interfaces;
 import java.io.Serializable;
 
 /**
- * ¿É·¢ËÍÀà,¼Ì³Ğ¸ÃÀà,²¢ÊµÏÖparse·½·¨¼´¿É»ñµÃ·¢ËÍÄÜÁ¦
+ * å¯å‘é€ç±»,ç»§æ‰¿è¯¥ç±»,å¹¶å®ç°parseæ–¹æ³•å³å¯è·å¾—å‘é€èƒ½åŠ›
  * Created by xuhao on 2017/5/16.
  */
 public interface ISendable extends Serializable {
     /**
-     * Êı¾İ×ª»¯
+     * æ•°æ®è½¬åŒ–
      *
-     * @return ½«Òª·¢ËÍµÄÊı¾İµÄ×Ö½ÚÊı×é
+     * @return å°†è¦å‘é€çš„æ•°æ®çš„å­—èŠ‚æ•°ç»„
      */
     byte[] parse();
 }

@@ -1,7 +1,7 @@
 package com.xuhao.didi.core.exceptions;
 
 /**
- * д�쳣
+ * 写异常
  * Created by xuhao on 2017/5/16.
  */
 

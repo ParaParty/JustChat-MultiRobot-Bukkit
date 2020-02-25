@@ -8,9 +8,9 @@ import com.xuhao.didi.core.iocore.interfaces.ISendable;
 
 public interface ISender<T> {
     /**
-     * ÔÚµ±Ç°µÄÁ¬½ÓÉÏ·¢ËÍÊı¾İ
+     * åœ¨å½“å‰çš„è¿æ¥ä¸Šå‘é€æ•°æ®
      *
-     * @param sendable ¾ßÓĞ·¢ËÍÄÜÁ¦µÄBean {@link ISendable}
+     * @param sendable å…·æœ‰å‘é€èƒ½åŠ›çš„Bean {@link ISendable}
      * @return T
      */
     T send(ISendable sendable);

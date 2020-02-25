@@ -6,14 +6,14 @@ package com.xuhao.didi.socket.common.interfaces.common_interfacies.client;
 
 public interface IDisConnectable {
     /**
-     * ¶Ï¿ªµ±Ç°Á¬½Ó¹ÜÀíÆ÷µÄÁ´½Ó,²¢°éËæ×ÅÒ»¸öÒì³£<br>
+     * æ–­å¼€å½“å‰è¿æ¥ç®¡ç†å™¨çš„é“¾æ¥,å¹¶ä¼´éšç€ä¸€ä¸ªå¼‚å¸¸<br>
      *
-     * @param e ¶Ï¿ªÊ±Ï£Íû°éËæµÄÒì³£¶ÔÏó
+     * @param e æ–­å¼€æ—¶å¸Œæœ›ä¼´éšçš„å¼‚å¸¸å¯¹è±¡
      */
     void disconnect(Exception e);
 
     /**
-     * ¶Ï¿ªµ±Ç°Á¬½Ó¹ÜÀíÆ÷µÄÁ´½Ó,,¶Ï¿ª»Øµ÷ÖĞµÄ¶Ï¿ªÒì³£½«ÊÇNull<br>
+     * æ–­å¼€å½“å‰è¿æ¥ç®¡ç†å™¨çš„é“¾æ¥,,æ–­å¼€å›è°ƒä¸­çš„æ–­å¼€å¼‚å¸¸å°†æ˜¯Null<br>
      */
     void disconnect();
 }

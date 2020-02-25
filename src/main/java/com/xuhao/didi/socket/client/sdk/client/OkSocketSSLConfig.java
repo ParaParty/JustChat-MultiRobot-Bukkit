@@ -10,19 +10,19 @@ import javax.net.ssl.TrustManager;
 
 public class OkSocketSSLConfig {
     /**
-     * °²È«Ğ­ÒéÃû³Æ(È±Ê¡Îª SSL)
+     * å®‰å…¨åè®®åç§°(ç¼ºçœä¸º SSL)
      */
     private String mProtocol;
     /**
-     * ĞÅÈÎÖ¤Êé¹ÜÀíÆ÷(È±Ê¡Îª X509)
+     * ä¿¡ä»»è¯ä¹¦ç®¡ç†å™¨(ç¼ºçœä¸º X509)
      */
     private TrustManager[] mTrustManagers;
     /**
-     * Ö¤ÊéÃØÔ¿¹ÜÀíÆ÷(È±Ê¡Îª null)
+     * è¯ä¹¦ç§˜é’¥ç®¡ç†å™¨(ç¼ºçœä¸º null)
      */
     private KeyManager[] mKeyManagers;
     /**
-     * ×Ô¶¨Òå SSLFactory(È±Ê¡Îª null)
+     * è‡ªå®šä¹‰ SSLFactory(ç¼ºçœä¸º null)
      */
     private SSLSocketFactory mCustomSSLFactory;
 

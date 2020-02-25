@@ -15,31 +15,31 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class PulseManager implements IPulse {
     /**
-     * Êı¾İ°ü·¢ËÍÆ÷
+     * æ•°æ®åŒ…å‘é€å™¨
      */
     private volatile IConnectionManager mManager;
     /**
-     * ĞÄÌøÊı¾İ°ü
+     * å¿ƒè·³æ•°æ®åŒ…
      */
     private IPulseSendable mSendable;
     /**
-     * Á¬½Ó²ÎÊı
+     * è¿æ¥å‚æ•°
      */
     private volatile OkSocketOptions mOkOptions;
     /**
-     * µ±Ç°ÆµÂÊ
+     * å½“å‰é¢‘ç‡
      */
     private volatile long mCurrentFrequency;
     /**
-     * µ±Ç°µÄÏß³ÌÄ£Ê½
+     * å½“å‰çš„çº¿ç¨‹æ¨¡å¼
      */
     private volatile OkSocketOptions.IOThreadMode mCurrentThreadMode;
     /**
-     * ÊÇ·ñËÀµô
+     * æ˜¯å¦æ­»æ‰
      */
     private volatile boolean isDead = false;
     /**
-     * ÔÊĞíÒÅÂ©µÄ´ÎÊı
+     * å…è®¸é—æ¼çš„æ¬¡æ•°
      */
     private volatile AtomicInteger mLoseTimes = new AtomicInteger(-1);
 
@@ -92,7 +92,7 @@ public class PulseManager implements IPulse {
     private synchronized void updateFrequency() {
         if (mCurrentThreadMode != OkSocketOptions.IOThreadMode.SIMPLEX) {
             mCurrentFrequency = mOkOptions.getPulseFrequency();
-            mCurrentFrequency = mCurrentFrequency < 1000 ? 1000 : mCurrentFrequency;//¼ä¸ô×îĞ¡ÎªÒ»Ãë
+            mCurrentFrequency = mCurrentFrequency < 1000 ? 1000 : mCurrentFrequency;//é—´éš”æœ€å°ä¸ºä¸€ç§’
         } else {
             privateDead();
         }

@@ -6,16 +6,16 @@ import com.xuhao.didi.core.iocore.interfaces.IPulseSendable;
 import com.xuhao.didi.socket.client.sdk.client.ConnectionInfo;
 
 /**
- * SocketĞĞÎªÊÊÅäÆ÷,ÊÇĞĞÎª¼àÌıÆ÷µÄÒ»¸öSimple°æ±¾,ÏêÇéÇë¼û{@link ISocketActionListener}
+ * Socketè¡Œä¸ºé€‚é…å™¨,æ˜¯è¡Œä¸ºç›‘å¬å™¨çš„ä¸€ä¸ªSimpleç‰ˆæœ¬,è¯¦æƒ…è¯·è§{@link ISocketActionListener}
  * Created by xuhao on 2017/5/17.
  */
 
 public abstract class SocketActionAdapter implements ISocketActionListener {
     /**
-     * SocketÍ¨Ñ¶IOÏß³ÌµÄÆô¶¯<br>
-     * ¸Ã·½·¨µ÷ÓÃºóIOÏß³Ì½«»áÕı³£¹¤×÷<br>
-     * ÀıÈçInputStreamÏß³ÌÆô¶¯ºó,½²»Øµ÷´Ë·½·¨,Èç¹ûOutPutStreamÏß³ÌÆô¶¯,Ò²»á»Øµ÷´Ë·½·¨.<br>
-     * Ò»´Î³É¹¦µÄË«¹¤Í¨Ñ¶½¨Á¢,»áµ÷ÓÃ´Ë·½·¨Á½´Î.<br>
+     * Socketé€šè®¯IOçº¿ç¨‹çš„å¯åŠ¨<br>
+     * è¯¥æ–¹æ³•è°ƒç”¨åIOçº¿ç¨‹å°†ä¼šæ­£å¸¸å·¥ä½œ<br>
+     * ä¾‹å¦‚InputStreamçº¿ç¨‹å¯åŠ¨å,è®²å›è°ƒæ­¤æ–¹æ³•,å¦‚æœOutPutStreamçº¿ç¨‹å¯åŠ¨,ä¹Ÿä¼šå›è°ƒæ­¤æ–¹æ³•.<br>
+     * ä¸€æ¬¡æˆåŠŸçš„åŒå·¥é€šè®¯å»ºç«‹,ä¼šè°ƒç”¨æ­¤æ–¹æ³•ä¸¤æ¬¡.<br>
      *
      * @param action {@link IAction#ACTION_READ_THREAD_START}
      *               {@link  IAction#ACTION_WRITE_THREAD_START}
@@ -26,14 +26,14 @@ public abstract class SocketActionAdapter implements ISocketActionListener {
     }
 
     /**
-     * SocketÍ¨Ñ¶IOÏß³ÌµÄ¹Ø±Õ<br>
-     * ¸Ã·½·¨µ÷ÓÃºóIOÏß³Ì½«³¹µ×ËÀÍö<br>
-     * ÀıÈçInputStreamÏß³ÌÏú»Ùºó,½²»Øµ÷´Ë·½·¨,Èç¹ûOutPutStreamÏß³ÌÏú»Ù,Ò²»á»Øµ÷´Ë·½·¨.<br>
-     * Ò»´Î³É¹¦µÄË«¹¤Í¨Ñ¶Ïú»Ù,»áµ÷ÓÃ´Ë·½·¨Á½´Î.<br>
+     * Socketé€šè®¯IOçº¿ç¨‹çš„å…³é—­<br>
+     * è¯¥æ–¹æ³•è°ƒç”¨åIOçº¿ç¨‹å°†å½»åº•æ­»äº¡<br>
+     * ä¾‹å¦‚InputStreamçº¿ç¨‹é”€æ¯å,è®²å›è°ƒæ­¤æ–¹æ³•,å¦‚æœOutPutStreamçº¿ç¨‹é”€æ¯,ä¹Ÿä¼šå›è°ƒæ­¤æ–¹æ³•.<br>
+     * ä¸€æ¬¡æˆåŠŸçš„åŒå·¥é€šè®¯é”€æ¯,ä¼šè°ƒç”¨æ­¤æ–¹æ³•ä¸¤æ¬¡.<br>
      *
      * @param action {@link IAction#ACTION_READ_THREAD_SHUTDOWN}
      *               {@link  IAction#ACTION_WRITE_THREAD_SHUTDOWN}
-     * @param e      Ïß³Ì¹Ø±ÕËùÓöµ½µÄÒì³£ĞÅÏ¢,Õı³£¶Ï¿ªÒ²¿ÉÄÜ»áÓĞÒì³£ĞÅÏ¢.
+     * @param e      çº¿ç¨‹å…³é—­æ‰€é‡åˆ°çš„å¼‚å¸¸ä¿¡æ¯,æ­£å¸¸æ–­å¼€ä¹Ÿå¯èƒ½ä¼šæœ‰å¼‚å¸¸ä¿¡æ¯.
      */
     @Override
     public void onSocketIOThreadShutdown(String action, Exception e) {
@@ -41,12 +41,12 @@ public abstract class SocketActionAdapter implements ISocketActionListener {
     }
 
     /**
-     * Socket¶Ï¿ªºó½øĞĞµÄ»Øµ÷<br>
-     * µ±Socket³¹µ×¶Ï¿ªºó,ÏµÍ³»á»Øµ÷¸Ã·½·¨<br>
+     * Socketæ–­å¼€åè¿›è¡Œçš„å›è°ƒ<br>
+     * å½“Socketå½»åº•æ–­å¼€å,ç³»ç»Ÿä¼šå›è°ƒè¯¥æ–¹æ³•<br>
      *
-     * @param info   Õâ´ÎÁ¬½ÓµÄÁ¬½ÓĞÅÏ¢
+     * @param info   è¿™æ¬¡è¿æ¥çš„è¿æ¥ä¿¡æ¯
      * @param action {@link IAction#ACTION_DISCONNECTION}
-     * @param e      Socket¶Ï¿ªÊ±µÄÒì³£ĞÅÏ¢,Èç¹ûÊÇÕı³£¶Ï¿ª(µ÷ÓÃdisconnect()),Òì³£ĞÅÏ¢½«Îªnull.Ê¹ÓÃe±äÁ¿Ê±Ó¦¸Ã½øĞĞÅĞ¿Õ²Ù×÷
+     * @param e      Socketæ–­å¼€æ—¶çš„å¼‚å¸¸ä¿¡æ¯,å¦‚æœæ˜¯æ­£å¸¸æ–­å¼€(è°ƒç”¨disconnect()),å¼‚å¸¸ä¿¡æ¯å°†ä¸ºnull.ä½¿ç”¨eå˜é‡æ—¶åº”è¯¥è¿›è¡Œåˆ¤ç©ºæ“ä½œ
      */
     @Override
     public void onSocketDisconnection(ConnectionInfo info, String action, Exception e) {
@@ -54,11 +54,11 @@ public abstract class SocketActionAdapter implements ISocketActionListener {
     }
 
     /**
-     * µ±SocketÁ¬½Ó½¨Á¢³É¹¦ºó<br>
-     * ÏµÍ³»á»Øµ÷¸Ã·½·¨,´ËÊ±ÓĞ¿ÉÄÜ¶ÁĞ´Ïß³Ì»¹Î´Æô¶¯Íê³É,²»¹ı²»»áÓ°Ïì´ó°­<br>
-     * µ±»Øµ÷´Ë·½·¨ºó,ÎÒÃÇ¿ÉÒÔÈÏÎªSocketÁ¬½ÓÒÑ¾­½¨Á¢Íê³É,²¢ÇÒ¶ÁĞ´Ïß³ÌÒ²³õÊ¼»¯Íê<br>
+     * å½“Socketè¿æ¥å»ºç«‹æˆåŠŸå<br>
+     * ç³»ç»Ÿä¼šå›è°ƒè¯¥æ–¹æ³•,æ­¤æ—¶æœ‰å¯èƒ½è¯»å†™çº¿ç¨‹è¿˜æœªå¯åŠ¨å®Œæˆ,ä¸è¿‡ä¸ä¼šå½±å“å¤§ç¢<br>
+     * å½“å›è°ƒæ­¤æ–¹æ³•å,æˆ‘ä»¬å¯ä»¥è®¤ä¸ºSocketè¿æ¥å·²ç»å»ºç«‹å®Œæˆ,å¹¶ä¸”è¯»å†™çº¿ç¨‹ä¹Ÿåˆå§‹åŒ–å®Œ<br>
      *
-     * @param info   Õâ´ÎÁ¬½ÓµÄÁ¬½ÓĞÅÏ¢
+     * @param info   è¿™æ¬¡è¿æ¥çš„è¿æ¥ä¿¡æ¯
      * @param action {@link IAction#ACTION_CONNECTION_SUCCESS}
      */
     @Override
@@ -67,13 +67,13 @@ public abstract class SocketActionAdapter implements ISocketActionListener {
     }
 
     /**
-     * µ±SocketÁ¬½ÓÊ§°ÜÊ±»á½øĞĞ»Øµ÷<br>
-     * ½¨Á¢SocketÁ¬½Ó,Èç¹û·şÎñÆ÷³öÏÖ¹ÊÕÏ,ÍøÂç³öÏÖÒì³£¶¼½«µ¼ÖÂ¸Ã·½·¨±»»Øµ÷<br>
-     * ÏµÍ³»Øµ÷´Ë·½·¨Ê±,IOÏß³Ì¾ùÎ´Æô¶¯.Èç¹ûIOÏß³ÌÆô¶¯½«»á»Øµ÷{@link #onSocketDisconnection(ConnectionInfo, String, Exception)}<br>
+     * å½“Socketè¿æ¥å¤±è´¥æ—¶ä¼šè¿›è¡Œå›è°ƒ<br>
+     * å»ºç«‹Socketè¿æ¥,å¦‚æœæœåŠ¡å™¨å‡ºç°æ•…éšœ,ç½‘ç»œå‡ºç°å¼‚å¸¸éƒ½å°†å¯¼è‡´è¯¥æ–¹æ³•è¢«å›è°ƒ<br>
+     * ç³»ç»Ÿå›è°ƒæ­¤æ–¹æ³•æ—¶,IOçº¿ç¨‹å‡æœªå¯åŠ¨.å¦‚æœIOçº¿ç¨‹å¯åŠ¨å°†ä¼šå›è°ƒ{@link #onSocketDisconnection(ConnectionInfo, String, Exception)}<br>
      *
-     * @param info   Õâ´ÎÁ¬½ÓµÄÁ¬½ÓĞÅÏ¢
+     * @param info   è¿™æ¬¡è¿æ¥çš„è¿æ¥ä¿¡æ¯
      * @param action {@link IAction#ACTION_CONNECTION_FAILED}
-     * @param e      Á¬½ÓÎ´³É¹¦½¨Á¢µÄ´íÎóÔ­Òò
+     * @param e      è¿æ¥æœªæˆåŠŸå»ºç«‹çš„é”™è¯¯åŸå› 
      */
     @Override
     public void onSocketConnectionFailed(ConnectionInfo info, String action, Exception e) {
@@ -81,10 +81,10 @@ public abstract class SocketActionAdapter implements ISocketActionListener {
     }
 
     /**
-     * SocketÍ¨Ñ¶´Ó·şÎñÆ÷¶ÁÈ¡µ½ÏûÏ¢ºóµÄÏìÓ¦<br>
+     * Socketé€šè®¯ä»æœåŠ¡å™¨è¯»å–åˆ°æ¶ˆæ¯åçš„å“åº”<br>
      *
      * @param action {@link IAction#ACTION_READ_COMPLETE}
-     * @param data   Ô­Ê¼µÄ¶ÁÈ¡µ½µÄÊı¾İ{@link OriginalData}
+     * @param data   åŸå§‹çš„è¯»å–åˆ°çš„æ•°æ®{@link OriginalData}
      */
     @Override
     public void onSocketReadResponse(ConnectionInfo info, String action, OriginalData data) {
@@ -92,10 +92,10 @@ public abstract class SocketActionAdapter implements ISocketActionListener {
     }
 
     /**
-     * SocketÍ¨Ñ¶Ğ´³öºóµÄÏìÓ¦»Øµ÷<br>
+     * Socketé€šè®¯å†™å‡ºåçš„å“åº”å›è°ƒ<br>
      *
      * @param action {@link IAction#ACTION_WRITE_COMPLETE}
-     * @param data   Ğ´³öµÄÊı¾İ{@link ISendable}
+     * @param data   å†™å‡ºçš„æ•°æ®{@link ISendable}
      */
     @Override
     public void onSocketWriteResponse(ConnectionInfo info, String action, ISendable data) {
@@ -103,12 +103,12 @@ public abstract class SocketActionAdapter implements ISocketActionListener {
     }
 
     /**
-     * SocketĞÄÌø·¢ËÍºóµÄ»Øµ÷<br>
-     * ĞÄÌø·¢ËÍÊÇÒ»¸öºÜÌØÊâµÄĞ´²Ù×÷<br>
-     * ¸ÃĞÄÌø·¢ËÍºó½«²»»á»Øµ÷{@link #onSocketWriteResponse(ConnectionInfo, String, ISendable)}·½·¨<br>
+     * Socketå¿ƒè·³å‘é€åçš„å›è°ƒ<br>
+     * å¿ƒè·³å‘é€æ˜¯ä¸€ä¸ªå¾ˆç‰¹æ®Šçš„å†™æ“ä½œ<br>
+     * è¯¥å¿ƒè·³å‘é€åå°†ä¸ä¼šå›è°ƒ{@link #onSocketWriteResponse(ConnectionInfo, String, ISendable)}æ–¹æ³•<br>
      *
-     * @param info Õâ´ÎÁ¬½ÓµÄÁ¬½ÓĞÅÏ¢
-     * @param data ĞÄÌø·¢ËÍÊı¾İ{@link IPulseSendable}
+     * @param info è¿™æ¬¡è¿æ¥çš„è¿æ¥ä¿¡æ¯
+     * @param data å¿ƒè·³å‘é€æ•°æ®{@link IPulseSendable}
      */
     @Override
     public void onPulseSend(ConnectionInfo info, IPulseSendable data) {

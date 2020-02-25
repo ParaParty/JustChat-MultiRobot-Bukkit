@@ -3,16 +3,16 @@ package com.xuhao.didi.core.pojo;
 import java.io.Serializable;
 
 /**
- * Ô­Ê¼Êı¾İ½á¹¹Ìå
+ * åŸå§‹æ•°æ®ç»“æ„ä½“
  * Created by xuhao on 2017/5/16.
  */
 public final class OriginalData implements Serializable {
     /**
-     * Ô­Ê¼Êı¾İ°üÍ·×Ö½ÚÊı×é
+     * åŸå§‹æ•°æ®åŒ…å¤´å­—èŠ‚æ•°ç»„
      */
     private byte[] mHeadBytes;
     /**
-     * Ô­Ê¼Êı¾İ°üÌå×Ö½ÚÊı×é
+     * åŸå§‹æ•°æ®åŒ…ä½“å­—èŠ‚æ•°ç»„
      */
     private byte[] mBodyBytes;
 

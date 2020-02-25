@@ -77,7 +77,7 @@ public class SocketClient extends Thread{
             @Override
             public void onSocketConnectionSuccess(ConnectionInfo info, String action) {
                 plugin.getLogger().info("已连接到服务器");
-                clientManager.send(new UidPacker(UUID.randomUUID().toString(), plugin.config.getString("serverName")));
+                clientManager.send(new UidPacker(plugin.config.getString("ID"), plugin.config.getString("serverName")));
                 OkSocket.open(info)
                         .getPulseManager()
                         .setPulseSendable(mPulseData)//只需要设置一次,下一次可以直接调用pulse()

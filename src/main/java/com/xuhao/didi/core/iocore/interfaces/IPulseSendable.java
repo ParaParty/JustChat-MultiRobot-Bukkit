@@ -1,7 +1,7 @@
 package com.xuhao.didi.core.iocore.interfaces;
 
 /**
- * 心跳标记接口
+ * 蹇冭烦鏍囪鎺ュ彛
  * Created by xuhao on 2017/5/18.
  */
 public interface IPulseSendable extends ISendable {

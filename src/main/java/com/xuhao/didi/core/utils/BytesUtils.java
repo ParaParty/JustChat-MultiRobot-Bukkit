@@ -6,10 +6,10 @@ package com.xuhao.didi.core.utils;
 public class BytesUtils {
 
     /**
-     * Éú³É´òÓ¡16½øÖÆÈÕÖ¾ËùĞèµÄ×Ö·û´®
+     * ç”Ÿæˆæ‰“å°16è¿›åˆ¶æ—¥å¿—æ‰€éœ€çš„å­—ç¬¦ä¸²
      *
-     * @param data Êı¾İÔ´
-     * @return ×Ö·û´®¸øÈÕÖ¾Ê¹ÓÃ
+     * @param data æ•°æ®æº
+     * @return å­—ç¬¦ä¸²ç»™æ—¥å¿—ä½¿ç”¨
      */
     public static String toHexStringForLog(byte[] data) {
         StringBuilder sb = new StringBuilder();

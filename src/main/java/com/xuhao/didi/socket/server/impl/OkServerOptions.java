@@ -10,32 +10,32 @@ import java.nio.ByteOrder;
 public class OkServerOptions implements IIOCoreOptions {
     private static boolean isDebug;
     /**
-     * ·şÎñÆ÷Á¬½ÓÄÜÁ¦Êı
+     * æœåŠ¡å™¨è¿æ¥èƒ½åŠ›æ•°
      */
     private int mConnectCapacity;
     /**
-     * Ğ´ÈëSocket¹ÜµÀÖĞµÄ×Ö½ÚĞò
+     * å†™å…¥Socketç®¡é“ä¸­çš„å­—èŠ‚åº
      */
     private ByteOrder mWriteOrder;
     /**
-     * ´ÓSocket¹ÜµÀÖĞ¶ÁÈ¡×Ö½ÚĞòÊ±µÄ×Ö½ÚĞò
+     * ä»Socketç®¡é“ä¸­è¯»å–å­—èŠ‚åºæ—¶çš„å­—èŠ‚åº
      */
     private ByteOrder mReadOrder;
     /**
-     * SocketÍ¨Ñ¶ÖĞ,ÒµÎñ²ã¶¨ÒåµÄÊı¾İ°ü°üÍ·¸ñÊ½
+     * Socketé€šè®¯ä¸­,ä¸šåŠ¡å±‚å®šä¹‰çš„æ•°æ®åŒ…åŒ…å¤´æ ¼å¼
      */
     private IReaderProtocol mReaderProtocol;
     /**
-     * ·¢ËÍÊ±µ¥¸öÊı¾İ°üµÄ×Ü³¤¶È
+     * å‘é€æ—¶å•ä¸ªæ•°æ®åŒ…çš„æ€»é•¿åº¦
      */
     private int mWritePackageBytes;
     /**
-     * ¶ÁÈ¡Ê±µ¥´Î¶ÁÈ¡µÄ»º´æ×Ö½Ú³¤¶È,ÊıÖµÔ½´ó,¶ÁÈ¡Ğ§ÂÊÔ½¸ß.µ«ÊÇÏàÓ¦µÄÏµÍ³ÏûºÄ½«Ô½´ó
+     * è¯»å–æ—¶å•æ¬¡è¯»å–çš„ç¼“å­˜å­—èŠ‚é•¿åº¦,æ•°å€¼è¶Šå¤§,è¯»å–æ•ˆç‡è¶Šé«˜.ä½†æ˜¯ç›¸åº”çš„ç³»ç»Ÿæ¶ˆè€—å°†è¶Šå¤§
      */
     private int mReadPackageBytes;
     /**
-     * ×î´ó¶ÁÈ¡Êı¾İµÄÕ×Êı(MB)<br>
-     * ·ÀÖ¹Êı¾İÌå¹ı´óµÄÊı¾İµ¼ÖÂÇ°¶ËÄÚ´æÒç³ö.
+     * æœ€å¤§è¯»å–æ•°æ®çš„å…†æ•°(MB)<br>
+     * é˜²æ­¢æ•°æ®ä½“è¿‡å¤§çš„æ•°æ®å¯¼è‡´å‰ç«¯å†…å­˜æº¢å‡º.
      */
     private int mMaxReadDataMB;
 

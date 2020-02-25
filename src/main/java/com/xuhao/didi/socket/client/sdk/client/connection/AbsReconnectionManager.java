@@ -11,24 +11,24 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
- * ³éÏóÁªµ÷¹ÜÀíÆ÷
+ * æŠ½è±¡è”è°ƒç®¡ç†å™¨
  * Created by xuhao on 2017/6/5.
  */
 public abstract class AbsReconnectionManager implements ISocketActionListener {
     /**
-     * Á¬½Ó¹ÜÀíÆ÷
+     * è¿æ¥ç®¡ç†å™¨
      */
     protected volatile IConnectionManager mConnectionManager;
     /**
-     * ĞÄÌø¹ÜÀíÆ÷
+     * å¿ƒè·³ç®¡ç†å™¨
      */
     protected PulseManager mPulseManager;
     /**
-     * ÊÇ·ñÏú»Ù
+     * æ˜¯å¦é”€æ¯
      */
     protected volatile boolean mDetach;
     /**
-     * ĞèÒªºöÂÔµÄ¶Ï¿ªÁ¬½Ó¼¯ºÏ,µ±ExceptionÔÚ´Ë¼¯ºÏÖĞ,ºöÂÔ¸ÃÀàĞÍµÄ¶Ï¿ªÒì³£,²»»á×Ô¶¯ÖØÁ¬
+     * éœ€è¦å¿½ç•¥çš„æ–­å¼€è¿æ¥é›†åˆ,å½“Exceptionåœ¨æ­¤é›†åˆä¸­,å¿½ç•¥è¯¥ç±»å‹çš„æ–­å¼€å¼‚å¸¸,ä¸ä¼šè‡ªåŠ¨é‡è¿
      */
     protected volatile Set<Class<? extends Exception>> mIgnoreDisconnectExceptionList = new LinkedHashSet<>();
 
@@ -37,9 +37,9 @@ public abstract class AbsReconnectionManager implements ISocketActionListener {
     }
 
     /**
-     * ¹ØÁªµ½Ä³Ò»¸öÁ¬½Ó¹ÜÀíÆ÷
+     * å…³è”åˆ°æŸä¸€ä¸ªè¿æ¥ç®¡ç†å™¨
      *
-     * @param manager µ±Ç°Á¬½Ó¹ÜÀíÆ÷
+     * @param manager å½“å‰è¿æ¥ç®¡ç†å™¨
      */
     public synchronized void attach(IConnectionManager manager) {
         if (mDetach) {
@@ -52,7 +52,7 @@ public abstract class AbsReconnectionManager implements ISocketActionListener {
     }
 
     /**
-     * ½â³ıÁ¬½Óµ±Ç°µÄÁ¬½Ó¹ÜÀíÆ÷
+     * è§£é™¤è¿æ¥å½“å‰çš„è¿æ¥ç®¡ç†å™¨
      */
     public synchronized void detach() {
         mDetach = true;
@@ -62,9 +62,9 @@ public abstract class AbsReconnectionManager implements ISocketActionListener {
     }
 
     /**
-     * Ìí¼ÓĞèÒªºöÂÔµÄÒì³£,µ±¶Ï¿ªÒì³£Îª¸ÃÒì³£Ê±,½«²»»á½øĞĞÖØÁ¬.
+     * æ·»åŠ éœ€è¦å¿½ç•¥çš„å¼‚å¸¸,å½“æ–­å¼€å¼‚å¸¸ä¸ºè¯¥å¼‚å¸¸æ—¶,å°†ä¸ä¼šè¿›è¡Œé‡è¿.
      *
-     * @param e ĞèÒªºöÂÔµÄÒì³£
+     * @param e éœ€è¦å¿½ç•¥çš„å¼‚å¸¸
      */
     public final void addIgnoreException(Class<? extends Exception> e) {
         synchronized (mIgnoreDisconnectExceptionList) {
@@ -73,9 +73,9 @@ public abstract class AbsReconnectionManager implements ISocketActionListener {
     }
 
     /**
-     * Ìí¼ÓĞèÒªºöÂÔµÄÒì³£,µ±¶Ï¿ªÒì³£Îª¸ÃÒì³£Ê±,½«²»»á½øĞĞÖØÁ¬.
+     * æ·»åŠ éœ€è¦å¿½ç•¥çš„å¼‚å¸¸,å½“æ–­å¼€å¼‚å¸¸ä¸ºè¯¥å¼‚å¸¸æ—¶,å°†ä¸ä¼šè¿›è¡Œé‡è¿.
      *
-     * @param e ĞèÒªÉ¾³ıµÄÒì³£
+     * @param e éœ€è¦åˆ é™¤çš„å¼‚å¸¸
      */
     public final void removeIgnoreException(Exception e) {
         synchronized (mIgnoreDisconnectExceptionList) {
@@ -84,9 +84,9 @@ public abstract class AbsReconnectionManager implements ISocketActionListener {
     }
 
     /**
-     * É¾³ıĞèÒªºöÂÔµÄÒì³£
+     * åˆ é™¤éœ€è¦å¿½ç•¥çš„å¼‚å¸¸
      *
-     * @param e ĞèÒªºöÂÔµÄÒì³£
+     * @param e éœ€è¦å¿½ç•¥çš„å¼‚å¸¸
      */
     public final void removeIgnoreException(Class<? extends Exception> e) {
         synchronized (mIgnoreDisconnectExceptionList) {
@@ -95,7 +95,7 @@ public abstract class AbsReconnectionManager implements ISocketActionListener {
     }
 
     /**
-     * É¾³ıËùÓĞµÄºöÂÔÒì³£
+     * åˆ é™¤æ‰€æœ‰çš„å¿½ç•¥å¼‚å¸¸
      */
     public final void removeAll() {
         synchronized (mIgnoreDisconnectExceptionList) {

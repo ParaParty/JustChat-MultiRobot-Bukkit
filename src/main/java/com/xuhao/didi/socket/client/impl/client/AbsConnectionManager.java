@@ -16,19 +16,19 @@ import java.io.Serializable;
 
 public abstract class AbsConnectionManager implements IConnectionManager {
     /**
-     * Á¬½ÓĞÅÏ¢
+     * è¿æ¥ä¿¡æ¯
      */
     protected ConnectionInfo mRemoteConnectionInfo;
     /**
-     * ±¾µØ°ó¶¨ĞÅÏ¢
+     * æœ¬åœ°ç»‘å®šä¿¡æ¯
      */
     protected ConnectionInfo mLocalConnectionInfo;
     /**
-     * Á¬½ÓĞÅÏ¢switch¼àÌıÆ÷
+     * è¿æ¥ä¿¡æ¯switchç›‘å¬å™¨
      */
     private IConnectionSwitchListener mConnectionSwitchListener;
     /**
-     * ×´Ì¬»ú
+     * çŠ¶æ€æœº
      */
     protected ActionDispatcher mActionDispatcher;
 

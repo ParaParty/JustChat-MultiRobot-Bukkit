@@ -10,8 +10,8 @@ import com.xuhao.didi.socket.common.interfaces.common_interfacies.server.IServer
 import com.xuhao.didi.socket.common.interfaces.common_interfacies.server.IServerManager;
 
 /**
- * OkSocketÊÇÒ»¿îÇáÁ¿¼¶µÄSocketÍ¨Ñ¶¿ò¼Ü,¿ÉÒÔÌá¹©µ¥¹¤,Ë«¹¤µÄTCPÍ¨Ñ¶.
- * ±¾ÀàÌá¹©OkSocketµÄËùÓĞ¶ÔÍâ½Ó¿Ú,Ê¹ÓÃOkSocket¿ò¼ÜÓ¦´Ó±¾ÀàµÄopen¿ªÆôÒ»¸öÁ¬½ÓÍ¨µÀ.
+ * OkSocketæ˜¯ä¸€æ¬¾è½»é‡çº§çš„Socketé€šè®¯æ¡†æ¶,å¯ä»¥æä¾›å•å·¥,åŒå·¥çš„TCPé€šè®¯.
+ * æœ¬ç±»æä¾›OkSocketçš„æ‰€æœ‰å¯¹å¤–æ¥å£,ä½¿ç”¨OkSocketæ¡†æ¶åº”ä»æœ¬ç±»çš„openå¼€å¯ä¸€ä¸ªè¿æ¥é€šé“.
  * Created by xuhao on 2017/5/16.
  */
 public class OkSocket {
@@ -19,7 +19,7 @@ public class OkSocket {
     private static ManagerHolder holder = ManagerHolder.getInstance();
 
     /**
-     * »ñµÃÒ»¸öSocketServer·şÎñÆ÷.
+     * è·å¾—ä¸€ä¸ªSocketServeræœåŠ¡å™¨.
      *
      * @param serverPort
      * @return
@@ -29,21 +29,21 @@ public class OkSocket {
     }
 
     /**
-     * ¿ªÆôÒ»¸ösocketÍ¨Ñ¶Í¨µÀ,²ÎÅäÎªÄ¬ÈÏ²ÎÅä
+     * å¼€å¯ä¸€ä¸ªsocketé€šè®¯é€šé“,å‚é…ä¸ºé»˜è®¤å‚é…
      *
-     * @param connectInfo Á¬½ÓĞÅÏ¢{@link ConnectionInfo}
-     * @return ¸Ã²ÎÊıµÄÁ¬½Ó¹ÜÀíÆ÷ {@link IConnectionManager} Á¬½Ó²ÎÊı½ö×÷ÎªÅäÖÃ¸ÃÍ¨µÀµÄ²ÎÅä,²»Ó°ÏìÈ«¾Ö²ÎÅä
+     * @param connectInfo è¿æ¥ä¿¡æ¯{@link ConnectionInfo}
+     * @return è¯¥å‚æ•°çš„è¿æ¥ç®¡ç†å™¨ {@link IConnectionManager} è¿æ¥å‚æ•°ä»…ä½œä¸ºé…ç½®è¯¥é€šé“çš„å‚é…,ä¸å½±å“å…¨å±€å‚é…
      */
     public static IConnectionManager open(ConnectionInfo connectInfo) {
         return holder.getConnection(connectInfo);
     }
 
     /**
-     * ¿ªÆôÒ»¸ösocketÍ¨Ñ¶Í¨µÀ,²ÎÅäÎªÄ¬ÈÏ²ÎÅä
+     * å¼€å¯ä¸€ä¸ªsocketé€šè®¯é€šé“,å‚é…ä¸ºé»˜è®¤å‚é…
      *
-     * @param ip   ĞèÒªÁ¬½ÓµÄÖ÷»úIPV4µØÖ·
-     * @param port ĞèÒªÁ¬½ÓµÄÖ÷»ú¿ª·ÅµÄSocket¶Ë¿ÚºÅ
-     * @return ¸Ã²ÎÊıµÄÁ¬½Ó¹ÜÀíÆ÷ {@link IConnectionManager} Á¬½Ó²ÎÊı½ö×÷ÎªÅäÖÃ¸ÃÍ¨µÀµÄ²ÎÅä,²»Ó°ÏìÈ«¾Ö²ÎÅä
+     * @param ip   éœ€è¦è¿æ¥çš„ä¸»æœºIPV4åœ°å€
+     * @param port éœ€è¦è¿æ¥çš„ä¸»æœºå¼€æ”¾çš„Socketç«¯å£å·
+     * @return è¯¥å‚æ•°çš„è¿æ¥ç®¡ç†å™¨ {@link IConnectionManager} è¿æ¥å‚æ•°ä»…ä½œä¸ºé…ç½®è¯¥é€šé“çš„å‚é…,ä¸å½±å“å…¨å±€å‚é…
      */
     public static IConnectionManager open(String ip, int port) {
         ConnectionInfo info = new ConnectionInfo(ip, port);
@@ -51,12 +51,12 @@ public class OkSocket {
     }
 
     /**
-     * ¿ªÆôÒ»¸ösocketÍ¨Ñ¶Í¨µÀ
+     * å¼€å¯ä¸€ä¸ªsocketé€šè®¯é€šé“
      * Deprecated please use {@link OkSocket#open(ConnectionInfo)}@{@link IConnectionManager#option(OkSocketOptions)}
      *
-     * @param connectInfo Á¬½ÓĞÅÏ¢{@link ConnectionInfo}
-     * @param okOptions   Á¬½Ó²ÎÅä{@link OkSocketOptions}
-     * @return ¸Ã²ÎÊıµÄÁ¬½Ó¹ÜÀíÆ÷ {@link IConnectionManager} Á¬½Ó²ÎÊı½ö×÷ÎªÅäÖÃ¸ÃÍ¨µÀµÄ²ÎÅä,²»Ó°ÏìÈ«¾Ö²ÎÅä
+     * @param connectInfo è¿æ¥ä¿¡æ¯{@link ConnectionInfo}
+     * @param okOptions   è¿æ¥å‚é…{@link OkSocketOptions}
+     * @return è¯¥å‚æ•°çš„è¿æ¥ç®¡ç†å™¨ {@link IConnectionManager} è¿æ¥å‚æ•°ä»…ä½œä¸ºé…ç½®è¯¥é€šé“çš„å‚é…,ä¸å½±å“å…¨å±€å‚é…
      * @deprecated
      */
     public static IConnectionManager open(ConnectionInfo connectInfo, OkSocketOptions okOptions) {
@@ -64,13 +64,13 @@ public class OkSocket {
     }
 
     /**
-     * ¿ªÆôÒ»¸ösocketÍ¨Ñ¶Í¨µÀ
+     * å¼€å¯ä¸€ä¸ªsocketé€šè®¯é€šé“
      * Deprecated please use {@link OkSocket#open(String, int)}@{@link IConnectionManager#option(OkSocketOptions)}
      *
-     * @param ip        ĞèÒªÁ¬½ÓµÄÖ÷»úIPV4µØÖ·
-     * @param port      ĞèÒªÁ¬½ÓµÄÖ÷»ú¿ª·ÅµÄSocket¶Ë¿ÚºÅ
-     * @param okOptions Á¬½Ó²ÎÅä{@link OkSocketOptions}
-     * @return ¸Ã²ÎÊıµÄÁ¬½Ó¹ÜÀíÆ÷ {@link IConnectionManager}
+     * @param ip        éœ€è¦è¿æ¥çš„ä¸»æœºIPV4åœ°å€
+     * @param port      éœ€è¦è¿æ¥çš„ä¸»æœºå¼€æ”¾çš„Socketç«¯å£å·
+     * @param okOptions è¿æ¥å‚é…{@link OkSocketOptions}
+     * @return è¯¥å‚æ•°çš„è¿æ¥ç®¡ç†å™¨ {@link IConnectionManager}
      * @deprecated
      */
     public static IConnectionManager open(String ip, int port, OkSocketOptions okOptions) {

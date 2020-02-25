@@ -30,39 +30,39 @@ import javax.net.ssl.TrustManager;
  */
 public class ConnectionManagerImpl extends AbsConnectionManager {
     /**
-     * Ì×½Ó×Ö
+     * å¥—æ¥å­—
      */
     private volatile Socket mSocket;
     /**
-     * socket²ÎÅäÏî
+     * socketå‚é…é¡¹
      */
     private volatile OkSocketOptions mOptions;
     /**
-     * IOÍ¨Ñ¶¹ÜÀíÆ÷
+     * IOé€šè®¯ç®¡ç†å™¨
      */
     private IIOManager mManager;
     /**
-     * Á¬½ÓÏß³Ì
+     * è¿æ¥çº¿ç¨‹
      */
     private Thread mConnectThread;
     /**
-     * SocketĞĞÎª¼àÌıÆ÷
+     * Socketè¡Œä¸ºç›‘å¬å™¨
      */
     private ActionHandler mActionHandler;
     /**
-     * Âö²«¹ÜÀíÆ÷
+     * è„‰æç®¡ç†å™¨
      */
     private volatile PulseManager mPulseManager;
     /**
-     * ÖØĞÂÁ¬½Ó¹ÜÀíÆ÷
+     * é‡æ–°è¿æ¥ç®¡ç†å™¨
      */
     private volatile AbsReconnectionManager mReconnectionManager;
     /**
-     * ÄÜ·ñÁ¬½Ó
+     * èƒ½å¦è¿æ¥
      */
     private volatile boolean isConnectionPermitted = true;
     /**
-     * ÊÇ·ñÕıÔÚ¶Ï¿ª
+     * æ˜¯å¦æ­£åœ¨æ–­å¼€
      */
     private volatile boolean isDisconnecting = false;
 
@@ -99,7 +99,7 @@ public class ConnectionManagerImpl extends AbsConnectionManager {
         isDisconnecting = false;
         if (mRemoteConnectionInfo == null) {
             isConnectionPermitted = true;
-            throw new UnConnectException("Á¬½Ó²ÎÊıÎª¿Õ,¼ì²éÁ¬½Ó²ÎÊı");
+            throw new UnConnectException("è¿æ¥å‚æ•°ä¸ºç©º,æ£€æŸ¥è¿æ¥å‚æ•°");
         }
         if (mActionHandler != null) {
             mActionHandler.detach(this);
@@ -126,12 +126,12 @@ public class ConnectionManagerImpl extends AbsConnectionManager {
     }
 
     private synchronized Socket getSocketByConfig() throws Exception {
-        //×Ô¶¨Òåsocket²Ù×÷
+        //è‡ªå®šä¹‰socketæ“ä½œ
         if (mOptions.getOkSocketFactory() != null) {
             return mOptions.getOkSocketFactory().createSocket(mRemoteConnectionInfo, mOptions);
         }
 
-        //Ä¬ÈÏ²Ù×÷
+        //é»˜è®¤æ“ä½œ
         OkSocketSSLConfig config = mOptions.getSSLConfig();
         if (config == null) {
             return new Socket();
@@ -146,7 +146,7 @@ public class ConnectionManagerImpl extends AbsConnectionManager {
 
             TrustManager[] trustManagers = config.getTrustManagers();
             if (trustManagers == null || trustManagers.length == 0) {
-                //È±Ê¡ĞÅÈÎËùÓĞÖ¤Êé
+                //ç¼ºçœä¿¡ä»»æ‰€æœ‰è¯ä¹¦
                 trustManagers = new TrustManager[]{new DefaultX509ProtocolTrustManager()};
             }
 
@@ -198,7 +198,7 @@ public class ConnectionManagerImpl extends AbsConnectionManager {
 
                 SLog.i("Start connect: " + mRemoteConnectionInfo.getIp() + ":" + mRemoteConnectionInfo.getPort() + " socket server...");
                 mSocket.connect(new InetSocketAddress(mRemoteConnectionInfo.getIp(), mRemoteConnectionInfo.getPort()), mOptions.getConnectTimeoutSecond() * 1000);
-                //¹Ø±ÕNagleËã·¨,ÎŞÂÛTCPÊı¾İ±¨´óĞ¡,Á¢¼´·¢ËÍ
+                //å…³é—­Nagleç®—æ³•,æ— è®ºTCPæ•°æ®æŠ¥å¤§å°,ç«‹å³å‘é€
                 mSocket.setTcpNoDelay(true);
                 resolveManager();
                 sendBroadcast(IAction.ACTION_CONNECTION_SUCCESS);
@@ -248,12 +248,10 @@ public class ConnectionManagerImpl extends AbsConnectionManager {
             }
         }
 
-        synchronized (this) {
-            String info = mRemoteConnectionInfo.getIp() + ":" + mRemoteConnectionInfo.getPort();
-            DisconnectThread thread = new DisconnectThread(exception, "Disconnect Thread for " + info);
-            thread.setDaemon(true);
-            thread.start();
-        }
+        String info = mRemoteConnectionInfo.getIp() + ":" + mRemoteConnectionInfo.getPort();
+        DisconnectThread thread = new DisconnectThread(exception, "Disconnect Thread for " + info);
+        thread.setDaemon(true);
+        thread.start();
     }
 
     private class DisconnectThread extends Thread {

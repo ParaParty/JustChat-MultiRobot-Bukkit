@@ -16,8 +16,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Vector;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static com.xuhao.didi.core.iocore.interfaces.IOAction.ACTION_PULSE_REQUEST;
 import static com.xuhao.didi.core.iocore.interfaces.IOAction.ACTION_READ_COMPLETE;
@@ -32,37 +33,41 @@ import static com.xuhao.didi.socket.client.sdk.client.action.IAction.ACTION_WRIT
 
 
 /**
- * ״̬��
+ * 状态机
  * Created by didi on 2018/4/19.
  */
 public class ActionDispatcher implements IRegister<ISocketActionListener, IConnectionManager>, IStateSender {
     /**
-     * �̻߳ص�����Handler
+     * 线程回调管理Handler
      */
     private static final DispatchThread HANDLE_THREAD = new DispatchThread();
 
     /**
-     * �¼����Ѷ���
+     * 事件消费队列
      */
     private static final LinkedBlockingQueue<ActionBean> ACTION_QUEUE = new LinkedBlockingQueue();
 
     static {
-        //�����ַ��߳�
+        //启动分发线程
         HANDLE_THREAD.start();
     }
 
     /**
-     * ��Ϊ�ص�����
+     * 行为回调集合
      */
-    private volatile Vector<ISocketActionListener> mResponseHandlerList = new Vector<>();
+    private volatile List<ISocketActionListener> mResponseHandlerList = new ArrayList<>();
     /**
-     * ������Ϣ
+     * 连接信息
      */
     private volatile ConnectionInfo mConnectionInfo;
     /**
-     * ���ӹ�����
+     * 连接管理器
      */
     private volatile IConnectionManager mManager;
+    /**
+     * 公平锁,虽然没啥卵用公平,因为使用了tryLock
+     */
+    private ReentrantLock mLock = new ReentrantLock(true);
 
 
     public ActionDispatcher(ConnectionInfo info, IConnectionManager manager) {
@@ -73,10 +78,19 @@ public class ActionDispatcher implements IRegister<ISocketActionListener, IConne
     @Override
     public IConnectionManager registerReceiver(final ISocketActionListener socketResponseHandler) {
         if (socketResponseHandler != null) {
-            synchronized (mResponseHandlerList) {
-                if (!mResponseHandlerList.contains(socketResponseHandler)) {
-                    mResponseHandlerList.add(socketResponseHandler);
+            try {
+                while (true) {
+                    if (mLock.tryLock(1, TimeUnit.SECONDS)) {
+                        if (!mResponseHandlerList.contains(socketResponseHandler)) {
+                            mResponseHandlerList.add(socketResponseHandler);
+                        }
+                        break;
+                    }
                 }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                mLock.unlock();
             }
         }
         return mManager;
@@ -84,12 +98,25 @@ public class ActionDispatcher implements IRegister<ISocketActionListener, IConne
 
     @Override
     public IConnectionManager unRegisterReceiver(ISocketActionListener socketResponseHandler) {
-        mResponseHandlerList.remove(socketResponseHandler);
+        if (socketResponseHandler != null) {
+            try {
+                while (true) {
+                    if (mLock.tryLock(1, TimeUnit.SECONDS)) {
+                        mResponseHandlerList.remove(socketResponseHandler);
+                        break;
+                    }
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                mLock.unlock();
+            }
+        }
         return mManager;
     }
 
     /**
-     * �ַ��յ�����Ӧ
+     * 分发收到的响应
      *
      * @param action
      * @param arg
@@ -187,17 +214,26 @@ public class ActionDispatcher implements IRegister<ISocketActionListener, IConne
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if (option.isCallbackInIndependentThread()) {//�����߳̽��лص�
+        } else if (option.isCallbackInIndependentThread()) {//独立线程进行回调
             ActionBean bean = new ActionBean(action, serializable, this);
             ACTION_QUEUE.offer(bean);
-        } else if (!option.isCallbackInIndependentThread()) {//IO�߳�����лص�
-            synchronized (mResponseHandlerList) {
-                List<ISocketActionListener> copyData = new ArrayList<>(mResponseHandlerList);
-                Iterator<ISocketActionListener> it = copyData.iterator();
-                while (it.hasNext()) {
-                    ISocketActionListener listener = it.next();
-                    this.dispatchActionToListener(action, serializable, listener);
+        } else if (!option.isCallbackInIndependentThread()) {//IO线程里进行回调
+            try {
+                while (true) {
+                    if (mLock.tryLock(1, TimeUnit.SECONDS)) {
+                        List<ISocketActionListener> copyData = new ArrayList<>(mResponseHandlerList);
+                        Iterator<ISocketActionListener> it = copyData.iterator();
+                        while (it.hasNext()) {
+                            ISocketActionListener listener = it.next();
+                            this.dispatchActionToListener(action, serializable, listener);
+                        }
+                        break;
+                    }
                 }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                mLock.unlock();
             }
         } else {
             SLog.e("ActionDispatcher error action:" + action + " is not dispatch");
@@ -214,7 +250,7 @@ public class ActionDispatcher implements IRegister<ISocketActionListener, IConne
     }
 
     /**
-     * �ַ��߳�
+     * 分发线程
      */
     private static class DispatchThread extends AbsLoopThread {
         public DispatchThread() {
@@ -244,7 +280,7 @@ public class ActionDispatcher implements IRegister<ISocketActionListener, IConne
     }
 
     /**
-     * ��Ϊ��װ
+     * 行为封装
      */
     protected static class ActionBean {
         public ActionBean(String action, Serializable arg, ActionDispatcher dispatcher) {
@@ -259,10 +295,10 @@ public class ActionDispatcher implements IRegister<ISocketActionListener, IConne
     }
 
     /**
-     * ��Ϊ�ַ�����
+     * 行为分发抽象
      */
     public static class ActionRunnable implements Runnable {
-        private ActionBean mActionBean;
+        private ActionDispatcher.ActionBean mActionBean;
 
         ActionRunnable(ActionBean actionBean) {
             mActionBean = actionBean;

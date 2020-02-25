@@ -10,11 +10,11 @@ import java.util.Collection;
 
 public class CMDPacker extends Packer implements ISendable {
 
-    public CMDPacker(int max, Collection<? extends Player> players){
-        super(getMsg(max, players));
+    public CMDPacker(String sender, String world, String world_display, int max, Collection<? extends Player> players){
+        super(getMsg(sender, world, world_display, max, players));
     }
 
-    private static String getMsg(int max, Collection<? extends Player> players){
+    private static String getMsg(String sender, String world, String world_display, int max, Collection<? extends Player> players){
         JSONObject CMDMessage = new JSONObject();
         CMDMessage.put("version", PackVersion);
         CMDMessage.put("type", MessagePackType.CMD_List);
@@ -26,7 +26,10 @@ public class CMDPacker extends Packer implements ISendable {
         for (Player player : players) {
             msg[i] = MessageTools.Base64Encode(player.getPlayerListName());
         }
-        CMDMessage.put("playerlist", msg);
+        CMDMessage.put("player_list", msg);
+        CMDMessage.put("sender", sender);
+        CMDMessage.put("world", world);
+        CMDMessage.put("world_display", world_display);
         return CMDMessage.toString();
     }
 }

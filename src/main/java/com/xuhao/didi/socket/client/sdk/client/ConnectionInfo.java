@@ -3,20 +3,20 @@ package com.xuhao.didi.socket.client.sdk.client;
 import java.io.Serializable;
 
 /**
- * Á¬½ÓĞÅÏ¢·şÎñÀà
+ * è¿æ¥ä¿¡æ¯æœåŠ¡ç±»
  * Created by xuhao on 2017/5/16.
  */
 public final class ConnectionInfo implements Serializable, Cloneable {
     /**
-     * IPV4µØÖ·
+     * IPV4åœ°å€
      */
     private String mIp;
     /**
-     * Á¬½Ó·şÎñÆ÷¶Ë¿ÚºÅ
+     * è¿æ¥æœåŠ¡å™¨ç«¯å£å·
      */
     private int mPort;
     /**
-     * µ±´ËIPµØÖ·Ping²»Í¨Ê±µÄ±¸ÓÃIP
+     * å½“æ­¤IPåœ°å€Pingä¸é€šæ—¶çš„å¤‡ç”¨IP
      */
     private ConnectionInfo mBackupInfo;
 
@@ -26,36 +26,36 @@ public final class ConnectionInfo implements Serializable, Cloneable {
     }
 
     /**
-     * »ñÈ¡´«ÈëµÄIPµØÖ·
+     * è·å–ä¼ å…¥çš„IPåœ°å€
      *
-     * @return ipµØÖ·
+     * @return ipåœ°å€
      */
     public String getIp() {
         return mIp;
     }
 
     /**
-     * »ñÈ¡´«ÈëµÄ¶Ë¿ÚºÅ
+     * è·å–ä¼ å…¥çš„ç«¯å£å·
      *
-     * @return ¶Ë¿ÚºÅ
+     * @return ç«¯å£å·
      */
     public int getPort() {
         return mPort;
     }
 
     /**
-     * »ñÈ¡±¸ÓÃµÄIpºÍ¶Ë¿ÚºÅ
+     * è·å–å¤‡ç”¨çš„Ipå’Œç«¯å£å·
      *
-     * @return ±¸ÓÃµÄ¶Ë¿ÚºÅºÍIPµØÖ·
+     * @return å¤‡ç”¨çš„ç«¯å£å·å’ŒIPåœ°å€
      */
     public ConnectionInfo getBackupInfo() {
         return mBackupInfo;
     }
 
     /**
-     * ÉèÖÃ±¸ÓÃµÄIPºÍ¶Ë¿ÚºÅ,¿ÉÒÔ²»ÉèÖÃ
+     * è®¾ç½®å¤‡ç”¨çš„IPå’Œç«¯å£å·,å¯ä»¥ä¸è®¾ç½®
      *
-     * @param backupInfo ±¸ÓÃµÄIPºÍ¶Ë¿ÚºÅĞÅÏ¢
+     * @param backupInfo å¤‡ç”¨çš„IPå’Œç«¯å£å·ä¿¡æ¯
      */
     public void setBackupInfo(ConnectionInfo backupInfo) {
         mBackupInfo = backupInfo;

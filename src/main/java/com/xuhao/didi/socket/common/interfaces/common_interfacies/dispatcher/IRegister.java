@@ -2,16 +2,16 @@ package com.xuhao.didi.socket.common.interfaces.common_interfacies.dispatcher;
 
 public interface IRegister<T, E> {
     /**
-     * ×¢²áÒ»¸ö»Øµ÷½ÓÊÕÆ÷
+     * æ³¨å†Œä¸€ä¸ªå›è°ƒæ¥æ”¶å™¨
      *
-     * @param socketActionListener »Øµ÷½ÓÊÕÆ÷
+     * @param socketActionListener å›è°ƒæ¥æ”¶å™¨
      */
     E registerReceiver(T socketActionListener);
 
     /**
-     * ½â³ı»Øµ÷½ÓÊÕÆ÷
+     * è§£é™¤å›è°ƒæ¥æ”¶å™¨
      *
-     * @param socketActionListener ×¢²áÊ±µÄ½ÓÊÕÆ÷,ĞèÒª½â³ıµÄ½ÓÊÕÆ÷
+     * @param socketActionListener æ³¨å†Œæ—¶çš„æ¥æ”¶å™¨,éœ€è¦è§£é™¤çš„æ¥æ”¶å™¨
      */
     E unRegisterReceiver(T socketActionListener);
 }

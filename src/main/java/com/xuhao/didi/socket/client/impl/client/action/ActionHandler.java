@@ -43,10 +43,10 @@ public class ActionHandler extends SocketActionAdapter {
 
     @Override
     public void onSocketIOThreadShutdown(String action, Exception e) {
-        if (mCurrentThreadMode != mManager.getOption().getIOThreadMode()) {//ÇĞ»»Ïß³ÌÄ£Ê½,²»ĞèÒª¶Ï¿ªÁ¬½Ó
+        if (mCurrentThreadMode != mManager.getOption().getIOThreadMode()) {//åˆ‡æ¢çº¿ç¨‹æ¨¡å¼,ä¸éœ€è¦æ–­å¼€è¿æ¥
             //do nothing
-        } else {//¶à¹¤Ä£Ê½
-            if (!iOThreadIsCalledDisconnect) {//±£Ö¤Ö»µ÷ÓÃÒ»´Î,¶à¹¤¶àÏß³Ì,»áµ÷ÓÃÁ½´Î
+        } else {//å¤šå·¥æ¨¡å¼
+            if (!iOThreadIsCalledDisconnect) {//ä¿è¯åªè°ƒç”¨ä¸€æ¬¡,å¤šå·¥å¤šçº¿ç¨‹,ä¼šè°ƒç”¨ä¸¤æ¬¡
                 iOThreadIsCalledDisconnect = true;
                 if (!(e instanceof ManuallyDisconnectException)) {
                     mManager.disconnect(e);

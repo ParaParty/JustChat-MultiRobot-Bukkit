@@ -6,22 +6,22 @@ package com.xuhao.didi.socket.client.sdk.client.bean;
 
 public interface IPulse {
     /**
-     * ¿ªÊ¼ĞÄÌø
+     * å¼€å§‹å¿ƒè·³
      */
     void pulse();
 
     /**
-     * ´¥·¢Ò»´ÎĞÄÌø
+     * è§¦å‘ä¸€æ¬¡å¿ƒè·³
      */
     void trigger();
 
     /**
-     * Í£Ö¹ĞÄÌø
+     * åœæ­¢å¿ƒè·³
      */
     void dead();
 
     /**
-     * ĞÄÌø·µ»ØºóÎ¹¹·,ACK
+     * å¿ƒè·³è¿”å›åå–‚ç‹—,ACK
      */
     void feed();
 }

@@ -11,88 +11,88 @@ import com.xuhao.didi.socket.common.interfaces.default_protocol.DefaultNormalRea
 import java.nio.ByteOrder;
 
 /**
- * OkSocket²ÎÊıÅäÖÃÀà<br>
+ * OkSocketå‚æ•°é…ç½®ç±»<br>
  * Created by xuhao on 2017/5/16.
  */
 public class OkSocketOptions implements IIOCoreOptions {
     /**
-     * ¿ò¼ÜÊÇ·ñÊÇµ÷ÊÔÄ£Ê½
+     * æ¡†æ¶æ˜¯å¦æ˜¯è°ƒè¯•æ¨¡å¼
      */
     private static boolean isDebug;
     /**
-     * SocketÍ¨Ñ¶Ä£Ê½
+     * Socketé€šè®¯æ¨¡å¼
      * <p>
-     * Çë×¢Òâ:<br>
-     * ×èÈûÊ½½öÖ§³ÖÀäÇĞ»»(¶Ï¿ªºóÇĞ»»)<br>
-     * ·Ç×èÈûÊ½¿ÉÒÔÈÈÇĞ»»<br>
+     * è¯·æ³¨æ„:<br>
+     * é˜»å¡å¼ä»…æ”¯æŒå†·åˆ‡æ¢(æ–­å¼€ååˆ‡æ¢)<br>
+     * éé˜»å¡å¼å¯ä»¥çƒ­åˆ‡æ¢<br>
      * </p>
      */
     private IOThreadMode mIOThreadMode;
     /**
-     * Á¬½ÓÊÇ·ñ¹ÜÀí±£´æ<br>
+     * è¿æ¥æ˜¯å¦ç®¡ç†ä¿å­˜<br>
      * <p>
-     * true:Á¬½Ó½«»á±£´æÔÚ¹ÜÀíÆ÷ÖĞ,½øĞĞĞÔÄÜÓÅ»¯ºÍ¶ÏÏßÖØÁ¬<br>
-     * false:²»»á±£´æÔÚ¹ÜÀíÆ÷ÖĞ,¶ÔÓÚÒÑ¾­±£´æµÄ»á½øĞĞÉ¾³ı,½«²»½øĞĞĞÔÄÜÓÅ»¯ºÍ¶ÏÏßÖØÁ¬.
+     * true:è¿æ¥å°†ä¼šä¿å­˜åœ¨ç®¡ç†å™¨ä¸­,è¿›è¡Œæ€§èƒ½ä¼˜åŒ–å’Œæ–­çº¿é‡è¿<br>
+     * false:ä¸ä¼šä¿å­˜åœ¨ç®¡ç†å™¨ä¸­,å¯¹äºå·²ç»ä¿å­˜çš„ä¼šè¿›è¡Œåˆ é™¤,å°†ä¸è¿›è¡Œæ€§èƒ½ä¼˜åŒ–å’Œæ–­çº¿é‡è¿.
      * </p>
      */
     private boolean isConnectionHolden;
     /**
-     * Ğ´ÈëSocket¹ÜµÀÖĞ¸ø·şÎñÆ÷µÄ×Ö½ÚĞò
+     * å†™å…¥Socketç®¡é“ä¸­ç»™æœåŠ¡å™¨çš„å­—èŠ‚åº
      */
     private ByteOrder mWriteOrder;
     /**
-     * ´ÓSocket¹ÜµÀÖĞ¶ÁÈ¡×Ö½ÚĞòÊ±µÄ×Ö½ÚĞò
+     * ä»Socketç®¡é“ä¸­è¯»å–å­—èŠ‚åºæ—¶çš„å­—èŠ‚åº
      */
     private ByteOrder mReadByteOrder;
     /**
-     * SocketÍ¨Ñ¶ÖĞ,ÒµÎñ²ã¶¨ÒåµÄÊı¾İ°ü°üÍ·¸ñÊ½
+     * Socketé€šè®¯ä¸­,ä¸šåŠ¡å±‚å®šä¹‰çš„æ•°æ®åŒ…åŒ…å¤´æ ¼å¼
      */
     private IReaderProtocol mReaderProtocol;
     /**
-     * ·¢ËÍ¸ø·şÎñÆ÷Ê±µ¥¸öÊı¾İ°üµÄ×Ü³¤¶È
+     * å‘é€ç»™æœåŠ¡å™¨æ—¶å•ä¸ªæ•°æ®åŒ…çš„æ€»é•¿åº¦
      */
     private int mWritePackageBytes;
     /**
-     * ´Ó·şÎñÆ÷¶ÁÈ¡Ê±µ¥´Î¶ÁÈ¡µÄ»º´æ×Ö½Ú³¤¶È,ÊıÖµÔ½´ó,¶ÁÈ¡Ğ§ÂÊÔ½¸ß.µ«ÊÇÏàÓ¦µÄÏµÍ³ÏûºÄ½«Ô½´ó
+     * ä»æœåŠ¡å™¨è¯»å–æ—¶å•æ¬¡è¯»å–çš„ç¼“å­˜å­—èŠ‚é•¿åº¦,æ•°å€¼è¶Šå¤§,è¯»å–æ•ˆç‡è¶Šé«˜.ä½†æ˜¯ç›¸åº”çš„ç³»ç»Ÿæ¶ˆè€—å°†è¶Šå¤§
      */
     private int mReadPackageBytes;
     /**
-     * Âö²«ÆµÂÊµ¥Î»ÊÇºÁÃë
+     * è„‰æé¢‘ç‡å•ä½æ˜¯æ¯«ç§’
      */
     private long mPulseFrequency;
     /**
-     * Âö²«¶ªÊ§´ÎÊı<br>
-     * ´óÓÚ»òµÈÓÚ¶ªÊ§´ÎÊıÊ±½«¶Ï¿ª¸ÃÍ¨µÀµÄÁ¬½Ó<br>
-     * Å×³ö{@link com.xuhao.didi.socket.client.impl.exceptions.DogDeadException}
+     * è„‰æä¸¢å¤±æ¬¡æ•°<br>
+     * å¤§äºæˆ–ç­‰äºä¸¢å¤±æ¬¡æ•°æ—¶å°†æ–­å¼€è¯¥é€šé“çš„è¿æ¥<br>
+     * æŠ›å‡º{@link com.xuhao.didi.socket.client.impl.exceptions.DogDeadException}
      */
     private int mPulseFeedLoseTimes;
     /**
-     * Á¬½Ó³¬Ê±Ê±¼ä(Ãë)
+     * è¿æ¥è¶…æ—¶æ—¶é—´(ç§’)
      */
     private int mConnectTimeoutSecond;
     /**
-     * ×î´ó¶ÁÈ¡Êı¾İµÄÕ×Êı(MB)<br>
-     * ·ÀÖ¹·şÎñÆ÷·µ»ØÊı¾İÌå¹ı´óµÄÊı¾İµ¼ÖÂÇ°¶ËÄÚ´æÒç³ö.
+     * æœ€å¤§è¯»å–æ•°æ®çš„å…†æ•°(MB)<br>
+     * é˜²æ­¢æœåŠ¡å™¨è¿”å›æ•°æ®ä½“è¿‡å¤§çš„æ•°æ®å¯¼è‡´å‰ç«¯å†…å­˜æº¢å‡º.
      */
     private int mMaxReadDataMB;
     /**
-     * ÖØĞÂÁ¬½Ó¹ÜÀíÆ÷
+     * é‡æ–°è¿æ¥ç®¡ç†å™¨
      */
     private AbsReconnectionManager mReconnectionManager;
     /**
-     * °²È«Ì×½Ó×Ö²ãÅäÖÃ
+     * å®‰å…¨å¥—æ¥å­—å±‚é…ç½®
      */
     private OkSocketSSLConfig mSSLConfig;
     /**
-     * Ì×½Ó×Ö¹¤³§
+     * å¥—æ¥å­—å·¥å‚
      */
     private OkSocketFactory mOkSocketFactory;
     /**
-     * ´Ó¶ÀÁ¢Ïß³Ì½øĞĞ»Øµ÷.
+     * ä»ç‹¬ç«‹çº¿ç¨‹è¿›è¡Œå›è°ƒ.
      */
     private boolean isCallbackInIndependentThread;
     /**
-     * ½«·Ö·¢·Åµ½handlerÖĞ,Íâ²¿ĞèÒª´«ÈëHandlerToken²¢ÇÒµ÷ÓÃHandler.post(runnable);
+     * å°†åˆ†å‘æ”¾åˆ°handlerä¸­,å¤–éƒ¨éœ€è¦ä¼ å…¥HandlerTokenå¹¶ä¸”è°ƒç”¨Handler.post(runnable);
      */
     private ThreadModeToken mCallbackThreadModeToken;
 
@@ -123,11 +123,11 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * SocketÍ¨Ñ¶Ä£Ê½
+         * Socketé€šè®¯æ¨¡å¼
          * <p>
-         * Çë×¢Òâ:<br>
-         * ×èÈûÊ½½öÖ§³ÖÀäÇĞ»»(¶Ï¿ªºóÇĞ»»)<br>
-         * ·Ç×èÈûÊ½¿ÉÒÔÈÈÇĞ»»<br>
+         * è¯·æ³¨æ„:<br>
+         * é˜»å¡å¼ä»…æ”¯æŒå†·åˆ‡æ¢(æ–­å¼€ååˆ‡æ¢)<br>
+         * éé˜»å¡å¼å¯ä»¥çƒ­åˆ‡æ¢<br>
          * </p>
          *
          * @param IOThreadMode {@link IOThreadMode}
@@ -138,10 +138,10 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * ×î´ó¶ÁÈ¡Êı¾İµÄÕ×Êı(MB)<br>
-         * ·ÀÖ¹·şÎñÆ÷·µ»ØÊı¾İÌå¹ı´óµÄÊı¾İµ¼ÖÂÇ°¶ËÄÚ´æÒç³ö<br>
+         * æœ€å¤§è¯»å–æ•°æ®çš„å…†æ•°(MB)<br>
+         * é˜²æ­¢æœåŠ¡å™¨è¿”å›æ•°æ®ä½“è¿‡å¤§çš„æ•°æ®å¯¼è‡´å‰ç«¯å†…å­˜æº¢å‡º<br>
          *
-         * @param maxReadDataMB Õ××Ö½ÚÎªµ¥Î»
+         * @param maxReadDataMB å…†å­—èŠ‚ä¸ºå•ä½
          */
         public Builder setMaxReadDataMB(int maxReadDataMB) {
             mOptions.mMaxReadDataMB = maxReadDataMB;
@@ -149,7 +149,7 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * °²È«Ì×½Ó×Ö²ãÅäÖÃ<br>
+         * å®‰å…¨å¥—æ¥å­—å±‚é…ç½®<br>
          *
          * @param SSLConfig {@link OkSocketSSLConfig}
          */
@@ -159,10 +159,10 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * SocketÍ¨Ñ¶ÖĞ,ÒµÎñ²ã¶¨ÒåµÄÊı¾İ°ü°üÍ·¸ñÊ½<br>
-         * Ä¬ÈÏµÄÎª{@link DefaultNormalReaderProtocol}<br>
+         * Socketé€šè®¯ä¸­,ä¸šåŠ¡å±‚å®šä¹‰çš„æ•°æ®åŒ…åŒ…å¤´æ ¼å¼<br>
+         * é»˜è®¤çš„ä¸º{@link DefaultNormalReaderProtocol}<br>
          *
-         * @param readerProtocol {@link IReaderProtocol} Í¨Ñ¶Í·Ğ­Òé
+         * @param readerProtocol {@link IReaderProtocol} é€šè®¯å¤´åè®®
          */
         public Builder setReaderProtocol(IReaderProtocol readerProtocol) {
             mOptions.mReaderProtocol = readerProtocol;
@@ -170,10 +170,10 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * ÉèÖÃÂö²«¼ä¸ôÆµÂÊ<br>
-         * µ¥Î»ÊÇºÁÃë<br>
+         * è®¾ç½®è„‰æé—´éš”é¢‘ç‡<br>
+         * å•ä½æ˜¯æ¯«ç§’<br>
          *
-         * @param pulseFrequency ¼ä¸ôºÁÃëÊı
+         * @param pulseFrequency é—´éš”æ¯«ç§’æ•°
          */
 
         public Builder setPulseFrequency(long pulseFrequency) {
@@ -182,14 +182,14 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * Á¬½ÓÊÇ·ñ¹ÜÀí±£´æ<br>
+         * è¿æ¥æ˜¯å¦ç®¡ç†ä¿å­˜<br>
          * <p>
-         * true:Á¬½Ó½«»á±£´æÔÚ¹ÜÀíÆ÷ÖĞ,½øĞĞĞÔÄÜÓÅ»¯ºÍ¶ÏÏßÖØÁ¬<br>
-         * false:²»»á±£´æÔÚ¹ÜÀíÆ÷ÖĞ,¶ÔÓÚÒÑ¾­±£´æµÄ»á½øĞĞÉ¾³ı,½«²»½øĞĞĞÔÄÜÓÅ»¯ºÍ¶ÏÏßÖØÁ¬.
+         * true:è¿æ¥å°†ä¼šä¿å­˜åœ¨ç®¡ç†å™¨ä¸­,è¿›è¡Œæ€§èƒ½ä¼˜åŒ–å’Œæ–­çº¿é‡è¿<br>
+         * false:ä¸ä¼šä¿å­˜åœ¨ç®¡ç†å™¨ä¸­,å¯¹äºå·²ç»ä¿å­˜çš„ä¼šè¿›è¡Œåˆ é™¤,å°†ä¸è¿›è¡Œæ€§èƒ½ä¼˜åŒ–å’Œæ–­çº¿é‡è¿.
          * </p>
-         * Ä¬ÈÏÊÇ true
+         * é»˜è®¤æ˜¯ true
          *
-         * @param connectionHolden true ½²´Ë´ÎÁ´½Ó½»ÓÉOkSocket½øĞĞ»º´æ¹ÜÀí,false Ôò²»½øĞĞ»º´æ¹ÜÀí.
+         * @param connectionHolden true è®²æ­¤æ¬¡é“¾æ¥äº¤ç”±OkSocketè¿›è¡Œç¼“å­˜ç®¡ç†,false åˆ™ä¸è¿›è¡Œç¼“å­˜ç®¡ç†.
          */
         public Builder setConnectionHolden(boolean connectionHolden) {
             mOptions.isConnectionHolden = connectionHolden;
@@ -197,12 +197,12 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * Âö²«¶ªÊ§´ÎÊı<br>
-         * ´óÓÚ»òµÈÓÚ¶ªÊ§´ÎÊıÊ±½«¶Ï¿ª¸ÃÍ¨µÀµÄÁ¬½Ó<br>
-         * Å×³ö{@link com.xuhao.didi.socket.client.impl.exceptions.DogDeadException}<br>
-         * Ä¬ÈÏÊÇ5´Î
+         * è„‰æä¸¢å¤±æ¬¡æ•°<br>
+         * å¤§äºæˆ–ç­‰äºä¸¢å¤±æ¬¡æ•°æ—¶å°†æ–­å¼€è¯¥é€šé“çš„è¿æ¥<br>
+         * æŠ›å‡º{@link com.xuhao.didi.socket.client.impl.exceptions.DogDeadException}<br>
+         * é»˜è®¤æ˜¯5æ¬¡
          *
-         * @param pulseFeedLoseTimes ¶ªÊ§ĞÄÌøACKµÄ´ÎÊı,ÀıÈç5,µ±¶ªÊ§3´ÎÊ±,×Ô¶¯¶Ï¿ª.
+         * @param pulseFeedLoseTimes ä¸¢å¤±å¿ƒè·³ACKçš„æ¬¡æ•°,ä¾‹å¦‚5,å½“ä¸¢å¤±3æ¬¡æ—¶,è‡ªåŠ¨æ–­å¼€.
          */
         public Builder setPulseFeedLoseTimes(int pulseFeedLoseTimes) {
             mOptions.mPulseFeedLoseTimes = pulseFeedLoseTimes;
@@ -210,11 +210,11 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * ÉèÖÃÊä³öSocket¹ÜµÀÖĞ¸ø·şÎñÆ÷µÄ×Ö½ÚĞò<br>
-         * Ä¬ÈÏÊÇ:´ó¶Ë×Ö½ÚĞò<br>
+         * è®¾ç½®è¾“å‡ºSocketç®¡é“ä¸­ç»™æœåŠ¡å™¨çš„å­—èŠ‚åº<br>
+         * é»˜è®¤æ˜¯:å¤§ç«¯å­—èŠ‚åº<br>
          *
-         * @param writeOrder {@link ByteOrder} ×Ö½ÚĞò
-         * @deprecated ÇëÊ¹ÓÃ {@link Builder#setWriteByteOrder(ByteOrder)}
+         * @param writeOrder {@link ByteOrder} å­—èŠ‚åº
+         * @deprecated è¯·ä½¿ç”¨ {@link Builder#setWriteByteOrder(ByteOrder)}
          */
         public Builder setWriteOrder(ByteOrder writeOrder) {
             setWriteByteOrder(writeOrder);
@@ -223,10 +223,10 @@ public class OkSocketOptions implements IIOCoreOptions {
 
 
         /**
-         * ÉèÖÃÊä³öSocket¹ÜµÀÖĞ¸ø·şÎñÆ÷µÄ×Ö½ÚĞò<br>
-         * Ä¬ÈÏÊÇ:´ó¶Ë×Ö½ÚĞò<br>
+         * è®¾ç½®è¾“å‡ºSocketç®¡é“ä¸­ç»™æœåŠ¡å™¨çš„å­—èŠ‚åº<br>
+         * é»˜è®¤æ˜¯:å¤§ç«¯å­—èŠ‚åº<br>
          *
-         * @param writeOrder {@link ByteOrder} ×Ö½ÚĞò
+         * @param writeOrder {@link ByteOrder} å­—èŠ‚åº
          */
         public Builder setWriteByteOrder(ByteOrder writeOrder) {
             mOptions.mWriteOrder = writeOrder;
@@ -234,10 +234,10 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * ÉèÖÃÊäÈëSocket¹ÜµÀÖĞ¶ÁÈ¡Ê±µÄ×Ö½ÚĞò<br>
-         * Ä¬ÈÏÊÇ:´ó¶Ë×Ö½ÚĞò<br>
+         * è®¾ç½®è¾“å…¥Socketç®¡é“ä¸­è¯»å–æ—¶çš„å­—èŠ‚åº<br>
+         * é»˜è®¤æ˜¯:å¤§ç«¯å­—èŠ‚åº<br>
          *
-         * @param readByteOrder {@link ByteOrder} ×Ö½ÚĞò
+         * @param readByteOrder {@link ByteOrder} å­—èŠ‚åº
          */
         public Builder setReadByteOrder(ByteOrder readByteOrder) {
             mOptions.mReadByteOrder = readByteOrder;
@@ -245,9 +245,9 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * ·¢ËÍ¸ø·şÎñÆ÷Ê±µ¥¸öÊı¾İ°üµÄ×Ü³¤¶È
+         * å‘é€ç»™æœåŠ¡å™¨æ—¶å•ä¸ªæ•°æ®åŒ…çš„æ€»é•¿åº¦
          *
-         * @param writePackageBytes µ¥¸öÊı¾İ°üµÄ×Ü´óĞ¡
+         * @param writePackageBytes å•ä¸ªæ•°æ®åŒ…çš„æ€»å¤§å°
          */
         public Builder setWritePackageBytes(int writePackageBytes) {
             mOptions.mWritePackageBytes = writePackageBytes;
@@ -255,9 +255,9 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * ´Ó·şÎñÆ÷¶ÁÈ¡Ê±µ¥¸öÊı¾İ°üµÄ×Ü³¤¶È
+         * ä»æœåŠ¡å™¨è¯»å–æ—¶å•ä¸ªæ•°æ®åŒ…çš„æ€»é•¿åº¦
          *
-         * @param readPackageBytes µ¥¸öÊı¾İ°üµÄ×Ü´óĞ¡
+         * @param readPackageBytes å•ä¸ªæ•°æ®åŒ…çš„æ€»å¤§å°
          */
         public Builder setReadPackageBytes(int readPackageBytes) {
             mOptions.mReadPackageBytes = readPackageBytes;
@@ -265,9 +265,9 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * ÉèÖÃÁ¬½Ó³¬Ê±Ê±¼ä,¸Ã³¬Ê±Ê±¼äÊÇÁ´Â·ÉÏ´Ó¿ªÊ¼Á¬½Óµ½Á¬½ÓÉÏµÄÊ±¼ä
+         * è®¾ç½®è¿æ¥è¶…æ—¶æ—¶é—´,è¯¥è¶…æ—¶æ—¶é—´æ˜¯é“¾è·¯ä¸Šä»å¼€å§‹è¿æ¥åˆ°è¿æ¥ä¸Šçš„æ—¶é—´
          *
-         * @param connectTimeoutSecond ³¬Ê±ÃëÊı,×¢Òâµ¥Î»ÊÇÃë
+         * @param connectTimeoutSecond è¶…æ—¶ç§’æ•°,æ³¨æ„å•ä½æ˜¯ç§’
          * @return
          */
         public Builder setConnectTimeoutSecond(int connectTimeoutSecond) {
@@ -276,11 +276,11 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * ÉèÖÃ¶ÏÏßÖØÁ¬µÄÁ¬½Ó¹ÜÀíÆ÷<br>
-         * Ä¬ÈÏµÄÁ¬½Ó¹ÜÀíÆ÷Îª{@link DefaultReconnectManager}<br>
-         * Èç¹û²»ĞèÒª¶ÏÏßÖØÁ¬ÇëÉèÖÃ¸Ã²ÎÊıÎª{@link com.xuhao.didi.socket.client.sdk.client.connection.NoneReconnect}
+         * è®¾ç½®æ–­çº¿é‡è¿çš„è¿æ¥ç®¡ç†å™¨<br>
+         * é»˜è®¤çš„è¿æ¥ç®¡ç†å™¨ä¸º{@link DefaultReconnectManager}<br>
+         * å¦‚æœä¸éœ€è¦æ–­çº¿é‡è¿è¯·è®¾ç½®è¯¥å‚æ•°ä¸º{@link com.xuhao.didi.socket.client.sdk.client.connection.NoneReconnect}
          *
-         * @param reconnectionManager ¶ÏÏßÖØÁ¬¹ÜÀíÆ÷{@link AbsReconnectionManager}
+         * @param reconnectionManager æ–­çº¿é‡è¿ç®¡ç†å™¨{@link AbsReconnectionManager}
          * @return
          */
         public Builder setReconnectionManager(
@@ -290,10 +290,10 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * ÉèÖÃSocket¹¤³§Àà,ÓÃÓÚÌá¹©Ò»¸ö¿ÉÒÔÁ¬½ÓµÄSocket.
-         * ¿ÉÒÔÊÇ¼ÓÃÜSocket,Ò²¿ÉÒÔÊÇÎ´¼ÓÃÜµÄsocket.
+         * è®¾ç½®Socketå·¥å‚ç±»,ç”¨äºæä¾›ä¸€ä¸ªå¯ä»¥è¿æ¥çš„Socket.
+         * å¯ä»¥æ˜¯åŠ å¯†Socket,ä¹Ÿå¯ä»¥æ˜¯æœªåŠ å¯†çš„socket.
          *
-         * @param factory socket¹¤³§·½·¨
+         * @param factory socketå·¥å‚æ–¹æ³•
          * @return
          */
         public Builder setSocketFactory(OkSocketFactory factory) {
@@ -302,10 +302,10 @@ public class OkSocketOptions implements IIOCoreOptions {
         }
 
         /**
-         * ÉèÖÃ»Øµ÷ÔÚÏß³ÌÖĞ,²»ÊÇÔÚUIÏß³ÌÖĞ.
+         * è®¾ç½®å›è°ƒåœ¨çº¿ç¨‹ä¸­,ä¸æ˜¯åœ¨UIçº¿ç¨‹ä¸­.
          *
-         * @param threadModeToken Õë¶ÔandroidÉè¼Æ,¿ÉÒÔÊ¹»Øµ÷ÔÚandroidµÄÖ÷Ïß³ÌÖĞ,
-         *                        ĞèÒª×Ô¼ºÊµÏÖhandleCallbackEvent·½·¨.ÔÚ·½·¨ÖĞÊ¹ÓÃHandler.post(runnable)½øĞĞ»Øµ÷
+         * @param threadModeToken é’ˆå¯¹androidè®¾è®¡,å¯ä»¥ä½¿å›è°ƒåœ¨androidçš„ä¸»çº¿ç¨‹ä¸­,
+         *                        éœ€è¦è‡ªå·±å®ç°handleCallbackEventæ–¹æ³•.åœ¨æ–¹æ³•ä¸­ä½¿ç”¨Handler.post(runnable)è¿›è¡Œå›è°ƒ
          * @return
          */
         public Builder setCallbackThreadModeToken(ThreadModeToken threadModeToken) {
@@ -414,15 +414,15 @@ public class OkSocketOptions implements IIOCoreOptions {
     }
 
     /**
-     * Ïß³ÌÄ£Ê½
+     * çº¿ç¨‹æ¨¡å¼
      */
     public enum IOThreadMode {
         /**
-         * µ¥¹¤Í¨Ñ¶
+         * å•å·¥é€šè®¯
          */
         SIMPLEX,
         /**
-         * Ë«¹¤Í¨Ñ¶
+         * åŒå·¥é€šè®¯
          */
         DUPLEX;
     }

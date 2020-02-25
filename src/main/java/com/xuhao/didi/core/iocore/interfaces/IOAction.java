@@ -1,10 +1,10 @@
 package com.xuhao.didi.core.iocore.interfaces;
 
 public interface IOAction {
-    //ÊÕµ½ÍÆËÍÏûÏ¢ÏìÓ¦
+    //æ”¶åˆ°æ¨é€æ¶ˆæ¯å“åº”
     String ACTION_READ_COMPLETE = "action_read_complete";
-    //Ğ´¸ø·şÎñÆ÷ÏìÓ¦
+    //å†™ç»™æœåŠ¡å™¨å“åº”
     String ACTION_WRITE_COMPLETE = "action_write_complete";
-    //·¢ËÍĞÄÌøÇëÇó
+    //å‘é€å¿ƒè·³è¯·æ±‚
     String ACTION_PULSE_REQUEST = "action_pulse_request";
 }

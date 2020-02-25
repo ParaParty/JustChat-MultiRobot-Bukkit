@@ -20,65 +20,65 @@ public interface IConnectionManager extends
         ISender<IConnectionManager>,
         IRegister<ISocketActionListener, IConnectionManager> {
     /**
-     * ÊÇ·ñÁ¬½Ó
+     * æ˜¯å¦è¿æ¥
      *
-     * @return true ÒÑÁ¬½Ó,false Î´Á¬½Ó
+     * @return true å·²è¿æ¥,false æœªè¿æ¥
      */
     boolean isConnect();
 
     /**
-     * ÊÇ·ñ´¦ÔÚ¶Ï¿ªÁ¬½ÓµÄ½×¶Î.
+     * æ˜¯å¦å¤„åœ¨æ–­å¼€è¿æ¥çš„é˜¶æ®µ.
      *
-     * @return true ÕıÔÚ¶Ï¿ªÁ¬½Ó,falseÁ¬½ÓÖĞ»òÕßÒÑ¶Ï¿ª.
+     * @return true æ­£åœ¨æ–­å¼€è¿æ¥,falseè¿æ¥ä¸­æˆ–è€…å·²æ–­å¼€.
      */
     boolean isDisconnecting();
 
     /**
-     * »ñÈ¡µ½ĞÄÌø¹ÜÀíÆ÷,ÓÃÀ´ÅäÖÃĞÄÌø²ÎÊıºÍĞÄÌøĞĞÎª.
+     * è·å–åˆ°å¿ƒè·³ç®¡ç†å™¨,ç”¨æ¥é…ç½®å¿ƒè·³å‚æ•°å’Œå¿ƒè·³è¡Œä¸º.
      *
-     * @return ĞÄÌø¹ÜÀíÆ÷
+     * @return å¿ƒè·³ç®¡ç†å™¨
      */
     PulseManager getPulseManager();
 
     /**
-     * ÊÇ·ñOkSocket±£´æ´Ë´ÎÁ¬½Ó
+     * æ˜¯å¦OkSocketä¿å­˜æ­¤æ¬¡è¿æ¥
      *
-     * @param isHold true ½øĞĞ±£Áô»º´æ¹ÜÀí.false ²»½øĞĞ±£´æ»º´æ¹ÜÀí.
+     * @param isHold true è¿›è¡Œä¿ç•™ç¼“å­˜ç®¡ç†.false ä¸è¿›è¡Œä¿å­˜ç¼“å­˜ç®¡ç†.
      */
     void setIsConnectionHolder(boolean isHold);
 
     /**
-     * »ñµÃÁ¬½ÓĞÅÏ¢
+     * è·å¾—è¿æ¥ä¿¡æ¯
      *
-     * @return Á¬½ÓĞÅÏ¢
+     * @return è¿æ¥ä¿¡æ¯
      */
     ConnectionInfo getRemoteConnectionInfo();
 
     /**
-     * »ñµÃ±¾µØÁ¬½ÓĞÅÏ¢
+     * è·å¾—æœ¬åœ°è¿æ¥ä¿¡æ¯
      *
-     * @return ±¾µØ°ó¶¨ĞÅÏ¢
+     * @return æœ¬åœ°ç»‘å®šä¿¡æ¯
      */
     ConnectionInfo getLocalConnectionInfo();
 
     /**
-     * ÉèÖÃ±¾µØ¶Ë¿ÚĞÅÏ¢
+     * è®¾ç½®æœ¬åœ°ç«¯å£ä¿¡æ¯
      *
-     * @param localConnectionInfo ±¾µØ°ó¶¨¶Ë¿ÚĞÅÏ¢
+     * @param localConnectionInfo æœ¬åœ°ç»‘å®šç«¯å£ä¿¡æ¯
      */
     void setLocalConnectionInfo(ConnectionInfo localConnectionInfo);
 
     /**
-     * ½«µ±Ç°µÄÁ¬½Ó¹ÜÀíÆ÷ÖĞµÄÁ¬½ÓĞÅÏ¢½øĞĞÇĞ»».
+     * å°†å½“å‰çš„è¿æ¥ç®¡ç†å™¨ä¸­çš„è¿æ¥ä¿¡æ¯è¿›è¡Œåˆ‡æ¢.
      *
-     * @param info ĞÂµÄÁ¬½ÓĞÅÏ¢
+     * @param info æ–°çš„è¿æ¥ä¿¡æ¯
      */
     void switchConnectionInfo(ConnectionInfo info);
 
     /**
-     * »ñµÃÖØÁ¬¹ÜÀíÆ÷,ÓÃÀ´ÅäÖÃÖØÁ¬¹ÜÀíÆ÷
+     * è·å¾—é‡è¿ç®¡ç†å™¨,ç”¨æ¥é…ç½®é‡è¿ç®¡ç†å™¨
      *
-     * @return ÖØÁ¬¹ÜÀíÆ÷
+     * @return é‡è¿ç®¡ç†å™¨
      */
     AbsReconnectionManager getReconnectionManager();
 

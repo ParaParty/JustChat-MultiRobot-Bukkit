@@ -23,39 +23,39 @@ import static com.xuhao.didi.socket.server.action.IAction.Server.ACTION_SERVER_W
 
 
 /**
- * ·şÎñÆ÷×´Ì¬»ú
+ * æœåŠ¡å™¨çŠ¶æ€æœº
  * Created by didi on 2018/4/19.
  */
 public class ServerActionDispatcher implements IRegister<IServerActionListener, IServerManager>, IStateSender {
     /**
-     * Ïß³Ì»Øµ÷¹ÜÀíHandler
+     * çº¿ç¨‹å›è°ƒç®¡ç†Handler
      */
     private static final DispatchThread HANDLE_THREAD = new DispatchThread();
 
     /**
-     * ÊÂ¼şÏû·Ñ¶ÓÁĞ
+     * äº‹ä»¶æ¶ˆè´¹é˜Ÿåˆ—
      */
     private static final LinkedBlockingQueue<ActionBean> ACTION_QUEUE = new LinkedBlockingQueue();
 
     static {
-        //Æô¶¯·Ö·¢Ïß³Ì
+        //å¯åŠ¨åˆ†å‘çº¿ç¨‹
         HANDLE_THREAD.start();
     }
 
     /**
-     * »Øµ÷ÁĞ±í
+     * å›è°ƒåˆ—è¡¨
      */
     private volatile List<IServerActionListener> mResponseHandlerList = new ArrayList<>();
     /**
-     * ·şÎñÆ÷¶Ë¿Ú
+     * æœåŠ¡å™¨ç«¯å£
      */
     private volatile int mServerPort;
     /**
-     * ¿Í»§¶Ë³Ø×Ó
+     * å®¢æˆ·ç«¯æ± å­
      */
     private volatile IClientPool<IClient, String> mClientPool;
     /**
-     * ·şÎñÆ÷¹ÜÀíÆ÷ÊµÀı
+     * æœåŠ¡å™¨ç®¡ç†å™¨å®ä¾‹
      */
     private volatile IServerManager<OkServerOptions> mServerManager;
 
@@ -92,7 +92,7 @@ public class ServerActionDispatcher implements IRegister<IServerActionListener, 
     }
 
     /**
-     * ·Ö·¢ÊÕµ½µÄÏìÓ¦
+     * åˆ†å‘æ”¶åˆ°çš„å“åº”
      *
      * @param action
      * @param responseHandler
@@ -157,7 +157,7 @@ public class ServerActionDispatcher implements IRegister<IServerActionListener, 
     }
 
     /**
-     * ĞĞÎª·â×°
+     * è¡Œä¸ºå°è£…
      */
     protected static class ActionBean {
         public ActionBean(String action, Serializable arg, ServerActionDispatcher dispatcher) {
@@ -172,7 +172,7 @@ public class ServerActionDispatcher implements IRegister<IServerActionListener, 
     }
 
     /**
-     * ·Ö·¢Ïß³Ì
+     * åˆ†å‘çº¿ç¨‹
      */
     private static class DispatchThread extends AbsLoopThread {
         public DispatchThread() {

@@ -16,11 +16,11 @@ import java.util.Iterator;
 public class DefaultReconnectManager extends AbsReconnectionManager {
 
     /**
-     * ×î´óÁ¬½ÓÊ§°Ü´ÎÊı,²»°üÀ¨¶Ï¿ªÒì³£
+     * æœ€å¤§è¿æ¥å¤±è´¥æ¬¡æ•°,ä¸åŒ…æ‹¬æ–­å¼€å¼‚å¸¸
      */
     private static final int MAX_CONNECTION_FAILED_TIMES = 12;
     /**
-     * Á¬½ÓÊ§°Ü´ÎÊı,²»°üÀ¨¶Ï¿ªÒì³£
+     * è¿æ¥å¤±è´¥æ¬¡æ•°,ä¸åŒ…æ‹¬æ–­å¼€å¼‚å¸¸
      */
     private int mConnectionFailedTimes = 0;
 
@@ -50,7 +50,7 @@ public class DefaultReconnectManager extends AbsReconnectionManager {
             mConnectionFailedTimes++;
             if (mConnectionFailedTimes > MAX_CONNECTION_FAILED_TIMES) {
                 resetThread();
-                //Á¬½ÓÊ§°Ü´ïµ½ãĞÖµ,ĞèÒªÇĞ»»±¸ÓÃÏßÂ·.
+                //è¿æ¥å¤±è´¥è¾¾åˆ°é˜ˆå€¼,éœ€è¦åˆ‡æ¢å¤‡ç”¨çº¿è·¯.
                 ConnectionInfo originInfo = mConnectionManager.getRemoteConnectionInfo();
                 ConnectionInfo backupInfo = originInfo.getBackupInfo();
                 if (backupInfo != null) {
@@ -73,7 +73,7 @@ public class DefaultReconnectManager extends AbsReconnectionManager {
     }
 
     /**
-     * ÊÇ·ñĞèÒªÖØÁ¬
+     * æ˜¯å¦éœ€è¦é‡è¿
      *
      * @param e
      * @return
@@ -96,7 +96,7 @@ public class DefaultReconnectManager extends AbsReconnectionManager {
 
 
     /**
-     * ÖØÖÃÖØÁ¬Ïß³Ì,¹Ø±ÕÏß³Ì
+     * é‡ç½®é‡è¿çº¿ç¨‹,å…³é—­çº¿ç¨‹
      */
     private synchronized void resetThread() {
         if (mReconnectTestingThread != null) {
@@ -105,7 +105,7 @@ public class DefaultReconnectManager extends AbsReconnectionManager {
     }
 
     /**
-     * ¿ªÊ¼ÑÓ³ÙÖØÁ¬
+     * å¼€å§‹å»¶è¿Ÿé‡è¿
      */
     private void reconnectDelay() {
         synchronized (mReconnectTestingThread) {
@@ -122,7 +122,7 @@ public class DefaultReconnectManager extends AbsReconnectionManager {
 
     private class ReconnectTestingThread extends AbsLoopThread {
         /**
-         * ÑÓÊ±Á¬½ÓÊ±¼ä
+         * å»¶æ—¶è¿æ¥æ—¶é—´
          */
         private long mReconnectTimeDelay = 10 * 1000;
 
@@ -143,7 +143,7 @@ public class DefaultReconnectManager extends AbsReconnectionManager {
                 return;
             }
 
-            //ÑÓ³ÙÖ´ĞĞ
+            //å»¶è¿Ÿæ‰§è¡Œ
             SLog.i("Reconnect after " + mReconnectTimeDelay + " mills ...");
             ThreadUtils.sleep(mReconnectTimeDelay);
 

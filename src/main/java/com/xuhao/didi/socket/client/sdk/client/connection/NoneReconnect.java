@@ -4,7 +4,7 @@ package com.xuhao.didi.socket.client.sdk.client.connection;
 import com.xuhao.didi.socket.client.sdk.client.ConnectionInfo;
 
 /**
- * ²»½øĞĞÖØĞÂÁ¬½ÓµÄÖØÁ¬¹ÜÀíÆ÷
+ * ä¸è¿›è¡Œé‡æ–°è¿æ¥çš„é‡è¿ç®¡ç†å™¨
  * Created by Tony on 2017/10/24.
  */
 public class NoneReconnect extends AbsReconnectionManager {

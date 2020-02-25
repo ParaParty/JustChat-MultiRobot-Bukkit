@@ -3,21 +3,21 @@ package com.xuhao.didi.socket.client.sdk.client.action;
 import com.xuhao.didi.core.iocore.interfaces.IOAction;
 
 public interface IAction extends IOAction {
-    //Êı¾İkey
+    //æ•°æ®key
     String ACTION_DATA = "action_data";
-    //socket¶ÁÏß³ÌÆô¶¯ÏìÓ¦
+    //socketè¯»çº¿ç¨‹å¯åŠ¨å“åº”
     String ACTION_READ_THREAD_START = "action_read_thread_start";
-    //socket¶ÁÏß³Ì¹Ø±ÕÏìÓ¦
+    //socketè¯»çº¿ç¨‹å…³é—­å“åº”
     String ACTION_READ_THREAD_SHUTDOWN = "action_read_thread_shutdown";
-    //socketĞ´Ïß³ÌÆô¶¯ÏìÓ¦
+    //socketå†™çº¿ç¨‹å¯åŠ¨å“åº”
     String ACTION_WRITE_THREAD_START = "action_write_thread_start";
-    //socketĞ´Ïß³Ì¹Ø±ÕÏìÓ¦
+    //socketå†™çº¿ç¨‹å…³é—­å“åº”
     String ACTION_WRITE_THREAD_SHUTDOWN = "action_write_thread_shutdown";
-    //socketÁ¬½Ó·şÎñÆ÷³É¹¦ÏìÓ¦
+    //socketè¿æ¥æœåŠ¡å™¨æˆåŠŸå“åº”
     String ACTION_CONNECTION_SUCCESS = "action_connection_success";
-    //socketÁ¬½Ó·şÎñÆ÷Ê§°ÜÏìÓ¦
+    //socketè¿æ¥æœåŠ¡å™¨å¤±è´¥å“åº”
     String ACTION_CONNECTION_FAILED = "action_connection_failed";
-    //socketÓë·şÎñÆ÷¶Ï¿ªÁ¬½Ó
+    //socketä¸æœåŠ¡å™¨æ–­å¼€è¿æ¥
     String ACTION_DISCONNECTION = "action_disconnection";
 
 }
