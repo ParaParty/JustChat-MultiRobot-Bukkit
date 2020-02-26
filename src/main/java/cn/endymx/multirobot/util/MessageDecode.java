@@ -98,6 +98,7 @@ public class MessageDecode {
                             }
                         }
                         for (Player player : plugin.getServer().getOnlinePlayers()) {
+                            //TODO 加个命令不看群内消息
                             player.spigot().sendMessage(bc);
                         }
                         break;
