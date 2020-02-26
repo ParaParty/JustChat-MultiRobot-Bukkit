@@ -8,6 +8,10 @@ import org.json.JSONObject;
 
 public class InfoPacker extends Packer implements ISendable {
 
+    public InfoPacker(String sender, int event){
+        super(getMsg(sender, event, null));
+    }
+
     public InfoPacker(String sender, int event, String message){
         super(getMsg(sender, event, message));
     }
@@ -18,7 +22,7 @@ public class InfoPacker extends Packer implements ISendable {
         infoMessage.put("type", MessagePackType.INFO);
         infoMessage.put("sender", MessageTools.Base64Encode(sender));
         infoMessage.put("event", event);
-        infoMessage.put("content", MessageTools.Base64Encode(ChatColor.stripColor(message)));
+        if (message != null) infoMessage.put("content", MessageTools.Base64Encode(ChatColor.stripColor(message)));
         return infoMessage.toString();
     }
 }
