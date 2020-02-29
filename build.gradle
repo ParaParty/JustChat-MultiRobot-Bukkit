@@ -30,21 +30,21 @@ repositories {
 dependencies {
     compile group: 'org.spigotmc', name: 'spigot-api', version:'1.12.2-R0.1-SNAPSHOT'
     compile group: 'org.json', name: 'json', version:'20190722'
-    compile group: 'com.linkedin.urls', name: 'url-detector', version:'0.1.17'
     compile group: 'com.tonystark.android', name: 'socket', version:'4.2.3'
     compile group: 'com.tonystark.android', name: 'socket-common-interface', version:'4.2.3'
     compile group: 'com.tonystark.android', name: 'socket-core', version:'4.2.3'
+    compile group: 'com.linkedin.urls', name: 'url-detector', version:'0.1.17'
     compile files('libs/VexView2.0.3.jar')
 }
 
 shadowJar{
     dependencies{
-        include(dependency("org.json:json:20180813"))
+        include(dependency("org.json:json:20190722"))
         include(dependency("com.tonystark.android:socket:4.2.3"))
         include(dependency("com.tonystark.android:socket-common-interface:4.2.3"))
         include(dependency("com.tonystark.android:socket-core:4.2.3"))
         include(dependency("com.linkedin.urls:url-detector:0.1.17"))
+        include(dependency("org.apache.commons:commons-lang3:3.3.1"))
         exclude("VexView2.0.3.jar")
     }
 }
-
