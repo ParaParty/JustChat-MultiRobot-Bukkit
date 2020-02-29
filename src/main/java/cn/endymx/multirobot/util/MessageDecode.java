@@ -27,7 +27,7 @@ public class MessageDecode {
         this.plugin = plugin;
     }
 
-    public void decodeData() {
+    public void     decodeData() {
         try {
             JSONObject json = new JSONObject(data);
             if (json.getInt("version") == Packer.PackVersion) {

@@ -1,0 +1,50 @@
+plugins {
+    //id 'org.spongepowered.plugin' version '0.8.1'
+    id 'com.github.johnrengelman.shadow' version '2.0.4'
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'cn.endymx'
+version = '2.0.0'
+
+description = """MultiRobot"""
+
+sourceCompatibility = 8
+targetCompatibility = 8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+configurations.all {
+}
+
+repositories {
+     maven { url "https://jcenter.bintray.com/" }
+     maven { url "https://repo.maven.apache.org/maven2" }
+     maven { url "https://papermc.io/repo/repository/maven-public/" }
+     maven { url "https://oss.sonatype.org/content/groups/public/" }
+}
+
+dependencies {
+    compile group: 'org.spigotmc', name: 'spigot-api', version:'1.12.2-R0.1-SNAPSHOT'
+    compile group: 'org.json', name: 'json', version:'20190722'
+    compile group: 'com.linkedin.urls', name: 'url-detector', version:'0.1.17'
+    compile group: 'com.tonystark.android', name: 'socket', version:'4.2.3'
+    compile group: 'com.tonystark.android', name: 'socket-common-interface', version:'4.2.3'
+    compile group: 'com.tonystark.android', name: 'socket-core', version:'4.2.3'
+    compile files('libs/VexView2.0.3.jar')
+}
+
+shadowJar{
+    dependencies{
+        include(dependency("org.json:json:20180813"))
+        include(dependency("com.tonystark.android:socket:4.2.3"))
+        include(dependency("com.tonystark.android:socket-common-interface:4.2.3"))
+        include(dependency("com.tonystark.android:socket-core:4.2.3"))
+        include(dependency("com.linkedin.urls:url-detector:0.1.17"))
+        exclude("VexView2.0.3.jar")
+    }
+}
+
