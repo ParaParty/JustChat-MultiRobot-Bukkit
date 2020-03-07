@@ -39,8 +39,14 @@ public class MessageDecode {
                         }
                         break;
                     case MessagePackType.INFO:
-                        plugin.getServer().broadcastMessage(MessageTools.Base64Decode(json.getString("content")));
+                        try {
+                            String content = json.getString("content");
+                            plugin.getServer().broadcastMessage(MessageTools.Base64Decode(content));
+                        } catch(Exception ignored) {
+
+                        }
                         break;
+                    case MessagePackType.UID: break;
                     case MessagePackType.CHAT:
                         String world = MessageTools.Base64Decode(json.getString("world_display"));
                         String sender = MessageTools.Base64Decode(json.getString("sender"));
