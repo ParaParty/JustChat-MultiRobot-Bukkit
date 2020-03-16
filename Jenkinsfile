@@ -9,7 +9,6 @@ pipeline {
         
         stage("检出") {
             steps {
-                sh 'ci-init'
                 checkout(
                     [
                         $class: 'GitSCM',
