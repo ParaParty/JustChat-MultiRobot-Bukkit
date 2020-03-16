@@ -64,7 +64,7 @@ public class LoadClass extends JavaPlugin implements Listener{
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event){
-        //TODO 检查权限 multirobot.forward.chat
+        if (!event.getPlayer().hasPermission("multirobot.forward.chat")) return;
         //TODO 检查该用户是否关闭了转发聊天消息功能 (指令开关)
         //TODO 新增 /一个命令 内容 命令来临时发送消息
         client.clientManager.send(new ChatPacker(event));
@@ -72,23 +72,34 @@ public class LoadClass extends JavaPlugin implements Listener{
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
-        //TODO 检查权限 multirobot.forward.network.* 或 multirobot.forward.network.join
-        //TODO 检查设置中 转发服务器内置加入退出消息到群 是否开启，若未开启 InfoPacker 第二个参数省略或 null
-        client.clientManager.send(new InfoPacker(event.getPlayer().getName(), MessagePackType.INFO_Join, event.getJoinMessage()));
+        if ( (!event.getPlayer().hasPermission("multirobot.forward.network.*")) &&
+                (!event.getPlayer().hasPermission("multirobot.forward.network.join"))) return;
+
+        if (config.getBoolean("forwardPlayersJoinAndDisconnectionMessages", true))
+            client.clientManager.send(new InfoPacker(event.getPlayer().getName(), MessagePackType.INFO_Join, event.getJoinMessage()));
+        else
+            client.clientManager.send(new InfoPacker(event.getPlayer().getName(), MessagePackType.INFO_Join, null));
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event){
-        //TODO 检查权限 multirobot.forward.network.* 或 multirobot.forward.network.disconnect
-        //TODO 检查设置中 转发服务器内置加入退出消息到群 是否开启，若未开启 InfoPacker 第二个参数省略或 null
-        client.clientManager.send(new InfoPacker(event.getPlayer().getName(), MessagePackType.INFO_Quit, event.getQuitMessage()));
+        if ( (!event.getPlayer().hasPermission("multirobot.forward.network.*")) &&
+                (!event.getPlayer().hasPermission("multirobot.forward.network.disconnect"))) return;
+
+        if (config.getBoolean("forwardPlayersJoinAndQuitMessages", true))
+            client.clientManager.send(new InfoPacker(event.getPlayer().getName(), MessagePackType.INFO_Quit, event.getQuitMessage()));
+        else
+            client.clientManager.send(new InfoPacker(event.getPlayer().getName(), MessagePackType.INFO_Quit, null));
     }
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event){
-        //TODO 检查权限 multirobot.forward.network.* 或 multirobot.forward.network.death
-        //TODO 检查设置中 转发服务器内置死亡消息到群 是否开启，若未开启 InfoPacker 第二个参数省略或 null
-        client.clientManager.send(new InfoPacker(event.getEntity().getPlayer().getName(), MessagePackType.INFO_Death, event.getDeathMessage()));
+        if (!event.getEntity().getPlayer().hasPermission("multirobot.forward.death")) return;
+
+        if (config.getBoolean("forwardPlayersDeadOriginalMessages", true))
+            client.clientManager.send(new InfoPacker(event.getEntity().getPlayer().getName(), MessagePackType.INFO_Death, event.getDeathMessage()));
+        else
+            client.clientManager.send(new InfoPacker(event.getEntity().getPlayer().getName(), MessagePackType.INFO_Death, null));
     }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

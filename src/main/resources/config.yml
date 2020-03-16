@@ -12,6 +12,12 @@ serverName: "Bukkit"
 #生成器： https://1024tools.com/uuid https://www.uuidgenerator.net/
 ID: "00000000-0000-0000-0000-000000000000"
 
+# 是否转发玩家死亡原始消息 1:转发 0:不转发
+forwardPlayersDeadOriginalMessages: true
+
+# 是否转发玩家上下线原始消息 1:转发 0:不转发
+forwardPlayersJoinAndQuitMessages: true
+
 #-----------开发设置----------#
 #！！！非必要请勿改动！！！
 #服务器心跳速度（秒）
