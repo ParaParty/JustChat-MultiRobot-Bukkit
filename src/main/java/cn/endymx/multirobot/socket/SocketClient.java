@@ -17,17 +17,16 @@ import com.xuhao.didi.socket.client.sdk.client.connection.IConnectionManager;
 
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
-import java.util.UUID;
 
 public class SocketClient extends Thread{
     private final static byte[] MessageHeader = {0x11, 0x45, 0x14};
 
-    private int port;
-    private String host;
-    private LoadClass plugin;
+    private final int port;
+    private final String host;
+    private final LoadClass plugin;
     public ConnectionInfo client;
     public IConnectionManager clientManager;
-    private PingPacker mPulseData = new PingPacker();
+    private final PingPacker mPulseData = new PingPacker();
 
     public SocketClient(String host, int port, LoadClass plugin) {
         this.port = port;

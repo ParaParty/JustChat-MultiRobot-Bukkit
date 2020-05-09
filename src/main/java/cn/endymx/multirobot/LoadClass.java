@@ -7,7 +7,6 @@ import cn.endymx.multirobot.socket.SocketClient;
 
 import cn.endymx.multirobot.util.MessagePackType;
 import cn.endymx.multirobot.vexview.VexView;
-import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -22,6 +21,8 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author endymx @ VexRobot Project
@@ -32,8 +33,9 @@ public class LoadClass extends JavaPlugin implements Listener{
     public boolean vv = false;
     public FileConfiguration config;
     public robotAPI api = null;
+    public HashMap<Player, Boolean> qq = new HashMap<>();
     private int id = 0;
-    private HashMap<Integer, String> url = new HashMap<>();
+    private final HashMap<Integer, String> url = new HashMap<>();
 
     public void onLoad(){
         saveDefaultConfig();
@@ -45,7 +47,7 @@ public class LoadClass extends JavaPlugin implements Listener{
         api = new robotAPI(this);
         getServer().getPluginManager().registerEvents(this, this);
         client = new SocketClient(config.getString("serverIP"), config.getInt("serverPort"), this);
-        client.run();
+        client.start();
         if(!config.getBoolean("useVexView")){
             getLogger().info("配置文件中已关闭显示图片功能");
         }/*else if(Bukkit.getPluginManager().getPlugin("VexView") != null && Bukkit.getPluginManager().getPlugin("VexView").isEnabled() && Double.parseDouble(VexView.getVersion().substring(0, 3) + VexView.getVersion().substring(4)) >= 2.0) {
@@ -65,8 +67,6 @@ public class LoadClass extends JavaPlugin implements Listener{
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event){
         if (!event.getPlayer().hasPermission("multirobot.forward.chat")) return;
-        //TODO 检查该用户是否关闭了转发聊天消息功能 (指令开关)
-        //TODO 新增 /一个命令 内容 命令来临时发送消息
         client.clientManager.send(new ChatPacker(event));
     }
 
@@ -109,13 +109,59 @@ public class LoadClass extends JavaPlugin implements Listener{
                 int y = Integer.parseInt(args[2]);
                 if(vv) VexView.sendHUD((Player) sender, getId(args[0]), args[0], 100, 100, x, y, 3, config.getDouble("imageX"), config.getDouble("imageY"), args[3]);
                 break;
+            case "robot":
+                if(sender.isOp()){
+                    if(args[0].equals("on")){
+                        if(client.clientManager.isConnect()){
+                            sender.sendMessage(Color.RED + "QQ聊天处于连接状态");
+                            return true;
+                        }
+                        client.start();
+                        sender.sendMessage(Color.YELLOW + "打开QQ聊天连接");
+                    }else{
+                        if(!client.clientManager.isConnect()){
+                            sender.sendMessage(Color.RED + "QQ聊天处于未连接状态");
+                            return true;
+                        }
+                        client.clientManager.disconnect();
+                        sender.sendMessage(Color.YELLOW + "关闭QQ聊天连接");
+                    }
+                }else{
+                    sender.sendMessage(Color.RED + "无使用权限");
+                }
+                break;
+            case "info":
+                if(!client.clientManager.isConnect()){
+                    sender.sendMessage(Color.RED + "连接未打开");
+                    return true;
+                }
+                if(sender.isOp()){
+                    Set<Player> p = new HashSet<>();
+                    client.clientManager.send(new ChatPacker(new AsyncPlayerChatEvent(true, (Player) sender, args[0], p)));
+                }else{
+                    sender.sendMessage(Color.RED + "无使用权限");
+                }
+                break;
+            case "qq":
+                if(sender instanceof Player){
+                    if(!qq.get(sender)){
+                        qq.put((Player) sender, true);
+                        sender.sendMessage(Color.YELLOW + "解除QQ聊天屏蔽");
+                    }else if(qq.get(sender) || qq.get(sender) == null){
+                        qq.put((Player) sender, false);
+                        sender.sendMessage(Color.YELLOW + "打开QQ聊天屏蔽");
+                    }
+                }
+                break;
             case "reload":
                 sender.sendMessage(Color.YELLOW + "更新配置文件并重启通讯中...");
                 reloadConfig();
                 config = getConfig();
-                client.clientManager.disconnect();
+                if(client.clientManager.isConnect()){
+                    client.clientManager.disconnect();
+                }
                 client = new SocketClient(config.getString("serverIP"), config.getInt("serverPort"), this);
-                client.run();
+                client.start();
                 sender.sendMessage(Color.GREEN + "重启完毕，等待连接到服务器");
                 break;
         }

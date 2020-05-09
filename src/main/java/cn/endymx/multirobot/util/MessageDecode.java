@@ -3,7 +3,6 @@ package cn.endymx.multirobot.util;
 import cn.endymx.multirobot.LoadClass;
 import cn.endymx.multirobot.packer.CMDPacker;
 import cn.endymx.multirobot.packer.Packer;
-import com.google.common.collect.ImmutableMap;
 import com.linkedin.urls.Url;
 import com.linkedin.urls.detection.UrlDetector;
 import com.linkedin.urls.detection.UrlDetectorOptions;
@@ -19,8 +18,8 @@ import java.net.*;
 import java.util.List;
 
 public class MessageDecode {
-    private String data;
-    private LoadClass plugin;
+    private final String data;
+    private final LoadClass plugin;
 
     public MessageDecode(String data, LoadClass plugin) {
         this.data = data;
@@ -85,12 +84,14 @@ public class MessageDecode {
                                             hb.setColor(ChatColor.RED);
                                             bc.addExtra(hb);
                                             break;
-                                        case "CQ:rich"://TODO: XML信息可能会URL为空
-                                            TextComponent rich = new TextComponent(MessageTools.Base64Decode(msg.getString("text")));
-                                            rich.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, MessageTools.Base64Decode(msg.getString("url"))));
-                                            rich.setColor(ChatColor.BLUE);
-                                            rich.setUnderlined(true);
-                                            bc.addExtra(rich);
+                                        case "CQ:rich":
+                                            if(!msg.getString("text").equals("")){
+                                                TextComponent rich = new TextComponent(MessageTools.Base64Decode(msg.getString("text")));
+                                                rich.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, MessageTools.Base64Decode(msg.getString("url"))));
+                                                rich.setColor(ChatColor.BLUE);
+                                                rich.setUnderlined(true);
+                                                bc.addExtra(rich);
+                                            }
                                             break;
                                         case "CQ:share":
                                             TextComponent share = new TextComponent("[分享] " + MessageTools.Base64Decode(msg.getString("title")));
@@ -104,8 +105,9 @@ public class MessageDecode {
                             }
                         }
                         for (Player player : plugin.getServer().getOnlinePlayers()) {
-                            //TODO 加个命令不看群内消息
-                            player.spigot().sendMessage(bc);
+                            if(plugin.qq.get(player) || plugin.qq.get(player) == null){
+                                player.spigot().sendMessage(bc);
+                            }
                         }
                         break;
                     case MessagePackType.CMD_List:
@@ -134,8 +136,7 @@ public class MessageDecode {
 
 
     private TextComponent decodeTextMessage(String content) {
-        String raw = content;
-        UrlDetector parser = new UrlDetector(raw, UrlDetectorOptions.HTML);
+        UrlDetector parser = new UrlDetector(content, UrlDetectorOptions.HTML);
         List<Url> detectUrl = parser.detect();
 
         TextComponent retText = new TextComponent();
@@ -151,8 +152,8 @@ public class MessageDecode {
 
             // match
             int j = 0;
-            for (j = 0; (i < raw.length()) && (j < originalUrl.length()); ) {
-                if ((j == -1) || (raw.charAt(i) == originalUrl.charAt(j))) {
+            for (j = 0; (i < content.length()) && (j < originalUrl.length()); ) {
+                if ((j == -1) || (content.charAt(i) == originalUrl.charAt(j))) {
                     i++;
                     j++;
                 } else {
@@ -165,7 +166,7 @@ public class MessageDecode {
             ///     End    i - originalUrl.length()
             ///     Length i - originalUrl.length() - plainTextStart
             if (i - originalUrl.length() - plainTextStart > 0) {
-                String part = raw.substring(plainTextStart, i - originalUrl.length());
+                String part = content.substring(plainTextStart, i - originalUrl.length());
                 TextComponent partText = new TextComponent(part);
                 retText.addExtra(partText);
             }
@@ -174,7 +175,7 @@ public class MessageDecode {
             ///     Start  i - originalUrl.length()
             ///     End    i
             ///     Length originalUrl.length()
-            String part = raw.substring(i - originalUrl.length(), i);
+            String part = content.substring(i - originalUrl.length(), i);
 
             TextComponent partText = new TextComponent();
             try {
@@ -196,8 +197,8 @@ public class MessageDecode {
 
         }
 
-        if (i < raw.length()) {
-            String part = raw.substring(i, raw.length());
+        if (i < content.length()) {
+            String part = content.substring(i, content.length());
             TextComponent partText = new TextComponent(part);
             retText.addExtra(partText);
         }
