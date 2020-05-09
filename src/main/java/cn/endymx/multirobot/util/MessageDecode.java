@@ -105,6 +105,7 @@ public class MessageDecode {
                             }
                         }
                         for (Player player : plugin.getServer().getOnlinePlayers()) {
+                            plugin.getLogger().info(bc.getText());
                             if(plugin.qq.get(player) || plugin.qq.get(player) == null){
                                 player.spigot().sendMessage(bc);
                             }
