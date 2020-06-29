@@ -110,7 +110,7 @@ public class LoadClass extends JavaPlugin implements Listener{
                 if(vv) VexView.sendHUD((Player) sender, getId(args[0]), args[0], 100, 100, x, y, 3, config.getDouble("imageX"), config.getDouble("imageY"), args[3]);
                 break;
             case "robot":
-                if(sender.isOp()){
+                if(sender.hasPermission("multirobot.admin")){
                     if(args[0].equals("on")){
                         if(client.clientManager.isConnect()){
                             sender.sendMessage(Color.RED + "QQ聊天处于连接状态");
@@ -135,7 +135,7 @@ public class LoadClass extends JavaPlugin implements Listener{
                     sender.sendMessage(Color.RED + "连接未打开");
                     return true;
                 }
-                if(sender.isOp()){
+                if(sender.hasPermission("multirobot.admin")){
                     Set<Player> p = new HashSet<>();
                     client.clientManager.send(new ChatPacker(new AsyncPlayerChatEvent(true, (Player) sender, args[0], p)));
                 }else{
