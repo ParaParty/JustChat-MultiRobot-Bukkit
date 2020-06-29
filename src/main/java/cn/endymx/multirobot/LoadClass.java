@@ -146,13 +146,13 @@ public class LoadClass extends JavaPlugin implements Listener{
             case "qq":
                 if(sender instanceof Player){
                     String name = ((Player)sender).getName();
-
-                    if(!qq.get(name)){
-                        qq.put(name, true);
-                        sender.sendMessage(Color.YELLOW + "解除QQ聊天屏蔽");
-                    }else if(qq.get(name) || qq.get(name) == null){
+                    Boolean status = qq.get(name);
+                    if (status == null || status) {
                         qq.put(name, false);
-                        sender.sendMessage(Color.YELLOW + "打开QQ聊天屏蔽");
+                        sender.sendMessage(Color.YELLOW + "不再转发QQ聊天消息");
+                    } else {
+                        qq.put(name, true);
+                        sender.sendMessage(Color.YELLOW + "开启转发QQ聊天消息");
                     }
                 }
                 break;
