@@ -117,7 +117,7 @@ public class MessageDecode {
                                     json.getString("world"),
                                     json.getString("world_display"),
                                     plugin.getServer().getMaxPlayers(),
-                                    plugin.getServer().getOnlinePlayers())
+                                    plugin.getServer().getOnlinePlayers().toArray())
                             );
                         } else {
                             plugin.getLogger().info("收到类型无法识别的消息");
