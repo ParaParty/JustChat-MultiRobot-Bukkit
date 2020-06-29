@@ -109,33 +109,34 @@ public class LoadClass extends JavaPlugin implements Listener{
                 int y = Integer.parseInt(args[2]);
                 if(vv) VexView.sendHUD((Player) sender, getId(args[0]), args[0], 100, 100, x, y, 3, config.getDouble("imageX"), config.getDouble("imageY"), args[3]);
                 break;
-            case "robot":
-                if(sender.hasPermission("multirobot.admin")){
-                    if(args[0].equals("on")){
-                        if(client.clientManager.isConnect()){
-                            sender.sendMessage(Color.RED + "QQ聊天处于连接状态");
-                            return true;
-                        }
-                        client.start();
-                        sender.sendMessage(Color.YELLOW + "打开QQ聊天连接");
-                    }else{
-                        if(!client.clientManager.isConnect()){
-                            sender.sendMessage(Color.RED + "QQ聊天处于未连接状态");
-                            return true;
-                        }
-                        client.clientManager.disconnect();
-                        sender.sendMessage(Color.YELLOW + "关闭QQ聊天连接");
-                    }
-                }else{
-                    sender.sendMessage(Color.RED + "无使用权限");
-                }
-                break;
+            //case "robot":
+            //    if(sender.hasPermission("multirobot.admin")){
+            //        if(args[0].equals("on")){
+            //            if(client.clientManager.isConnect()){
+            //                sender.sendMessage(Color.RED + "QQ聊天处于连接状态");
+            //                return true;
+            //            }
+            //            client.start();
+            //            sender.sendMessage(Color.YELLOW + "打开QQ聊天连接");
+            //        }else{
+            //            if(!client.clientManager.isConnect()){
+            //                sender.sendMessage(Color.RED + "QQ聊天处于未连接状态");
+            //                return true;
+            //            }
+            //            client.clientManager.disconnect();
+            //            sender.sendMessage(Color.YELLOW + "关闭QQ聊天连接");
+            //        }
+            //    }else{
+            //        sender.sendMessage(Color.RED + "无使用权限");
+            //    }
+            //    break;
             case "info":
                 if(!client.clientManager.isConnect()){
                     sender.sendMessage(Color.RED + "连接未打开");
                     return true;
                 }
-                if(sender.hasPermission("multirobot.admin")){
+                if(sender.hasPermission("multirobot.forward.chat")){
+                    if (args.length < 1) break;
                     Set<Player> p = new HashSet<>();
                     client.clientManager.send(new ChatPacker(new AsyncPlayerChatEvent(true, (Player) sender, args[0], p)));
                 }else{
@@ -155,17 +156,17 @@ public class LoadClass extends JavaPlugin implements Listener{
                     }
                 }
                 break;
-            case "reload":
-                sender.sendMessage(Color.YELLOW + "更新配置文件并重启通讯中...");
-                reloadConfig();
-                config = getConfig();
-                if(client.clientManager.isConnect()){
-                    client.clientManager.disconnect();
-                }
-                client = new SocketClient(config.getString("serverIP"), config.getInt("serverPort"), this);
-                client.start();
-                sender.sendMessage(Color.GREEN + "重启完毕，等待连接到服务器");
-                break;
+            //case "reload":
+            //    sender.sendMessage(Color.YELLOW + "更新配置文件并重启通讯中...");
+            //    reloadConfig();
+            //    config = getConfig();
+            //    if(client.clientManager.isConnect()){
+            //        client.clientManager.disconnect();
+            //    }
+            //    client = new SocketClient(config.getString("serverIP"), config.getInt("serverPort"), this);
+            //    client.start();
+            //    sender.sendMessage(Color.GREEN + "重启完毕，等待连接到服务器");
+            //    break;
         }
         return true;
     }

@@ -8,9 +8,11 @@ softdepend: [VexView]
 commands:
   getimage:
     description: 获取一个图片并显示
-  robot:
-    description: QQ连接开关
+  #robot:
+  #  description: QQ连接开关
   info:
     description: 发送一条信息
-  reload:
-    description: 重新加载插件配置文件
+  #reload:
+  #  description: 重新加载插件配置文件
+  qq:
+    description: 开启或关闭QQ消息
