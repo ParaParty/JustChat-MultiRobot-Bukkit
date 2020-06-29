@@ -57,7 +57,7 @@ public class LoadClass extends JavaPlugin implements Listener{
         }else{
             getLogger().info("未检测到VexView插件|VexView插件非最新版，已关闭显示图片功能");
         }*/
-        getLogger().info("欢迎使用本插件，当前版本v1.2.0");
+        getLogger().info("欢迎使用本插件，当前版本v2.0.0");
     }
 
     public void onDisable() {
