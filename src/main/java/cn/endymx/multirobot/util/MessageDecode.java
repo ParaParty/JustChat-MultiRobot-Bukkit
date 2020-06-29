@@ -104,10 +104,11 @@ public class MessageDecode {
                                     break;
                             }
                         }
-                        for (Player player : plugin.getServer().getOnlinePlayers()) {
-                            plugin.getLogger().info(bc.getText());
-                            if(plugin.qq.get(player) || plugin.qq.get(player) == null){
-                                player.spigot().sendMessage(bc);
+                        plugin.getLogger().info(bc.toPlainText());
+                        Object[] players = plugin.getServer().getOnlinePlayers().toArray();
+                        for (int i = 0; i < players.length; i++){
+                            if(plugin.qq.get(((Player)players[i]).getName()) == null || plugin.qq.get(((Player)players[i]).getName())){
+                                ((Player)players[i]).spigot().sendMessage(bc);
                             }
                         }
                         break;

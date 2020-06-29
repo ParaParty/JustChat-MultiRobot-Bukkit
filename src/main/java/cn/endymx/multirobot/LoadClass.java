@@ -33,7 +33,7 @@ public class LoadClass extends JavaPlugin implements Listener{
     public boolean vv = false;
     public FileConfiguration config;
     public robotAPI api = null;
-    public HashMap<Player, Boolean> qq = new HashMap<>();
+    public HashMap<String, Boolean> qq = new HashMap<>();
     private int id = 0;
     private final HashMap<Integer, String> url = new HashMap<>();
 
@@ -144,11 +144,13 @@ public class LoadClass extends JavaPlugin implements Listener{
                 break;
             case "qq":
                 if(sender instanceof Player){
-                    if(!qq.get(sender)){
-                        qq.put((Player) sender, true);
+                    String name = ((Player)sender).getName();
+
+                    if(!qq.get(name)){
+                        qq.put(name, true);
                         sender.sendMessage(Color.YELLOW + "解除QQ聊天屏蔽");
-                    }else if(qq.get(sender) || qq.get(sender) == null){
-                        qq.put((Player) sender, false);
+                    }else if(qq.get(name) || qq.get(name) == null){
+                        qq.put(name, false);
                         sender.sendMessage(Color.YELLOW + "打开QQ聊天屏蔽");
                     }
                 }
