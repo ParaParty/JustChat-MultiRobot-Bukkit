@@ -86,7 +86,7 @@ public class LoadClass extends JavaPlugin implements Listener{
         if ( (!event.getPlayer().hasPermission("multirobot.forward.network.*")) &&
                 (!event.getPlayer().hasPermission("multirobot.forward.network.disconnect"))) return;
 
-        if (config.getBoolean("forwardPlayersJoinAndQuitMessages", true))
+        if (config.getBoolean("forwardPlayersJoinAndDisconnectionMessages", true))
             client.clientManager.send(new InfoPacker(event.getPlayer().getName(), MessagePackType.INFO_Quit, event.getQuitMessage()));
         else
             client.clientManager.send(new InfoPacker(event.getPlayer().getName(), MessagePackType.INFO_Quit, null));

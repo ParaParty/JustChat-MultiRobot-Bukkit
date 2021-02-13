@@ -2,7 +2,7 @@ name: MultiRobot
 author: endymx
 description: 多平台通讯
 main: cn.endymx.multirobot.LoadClass
-version: 2.0.0
+version: 2.0.1
 softdepend: [VexView]
 
 commands:
