@@ -52,3 +52,5 @@ imageBigY: 65
 #收到的信息在MC中的聊天前缀
 messageFormQQ: "[%world%]<%player%> "
 
+#收到的信息在MC中是否去掉自定义颜色代码
+chatColorFormQQ: false

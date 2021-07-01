@@ -107,7 +107,7 @@ public class LoadClass extends JavaPlugin implements Listener{
             case "getimage":
                 int x = Integer.parseInt(args[1]);
                 int y = Integer.parseInt(args[2]);
-                if(vv) VexView.sendHUD((Player) sender, getId(args[0]), args[0], 100, 100, x, y, 3, config.getDouble("imageX"), config.getDouble("imageY"), args[3]);
+                //if(vv) VexView.sendHUD((Player) sender, getId(args[0]), args[0], 100, 100, x, y, 3, config.getDouble("imageX"), config.getDouble("imageY"), args[3]);
                 break;
             //case "robot":
             //    if(sender.hasPermission("multirobot.admin")){

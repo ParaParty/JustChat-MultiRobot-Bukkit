@@ -6,7 +6,7 @@ import cn.endymx.multirobot.packer.Packer;
 import com.linkedin.urls.Url;
 import com.linkedin.urls.detection.UrlDetector;
 import com.linkedin.urls.detection.UrlDetectorOptions;
-import net.md_5.bungee.api.ChatColor;
+import org.bukkit.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
@@ -26,7 +26,7 @@ public class MessageDecode {
         this.plugin = plugin;
     }
 
-    public void     decodeData() {
+    public void decodeData() {
         try {
             JSONObject json = new JSONObject(data);
             if (json.getInt("version") == Packer.PackVersion) {
@@ -108,6 +108,7 @@ public class MessageDecode {
                         Object[] players = plugin.getServer().getOnlinePlayers().toArray();
                         for (int i = 0; i < players.length; i++){
                             if(plugin.qq.get(((Player)players[i]).getName()) == null || plugin.qq.get(((Player)players[i]).getName())){
+                                if(plugin.config.getString("chatColorFormQQ")) bc = ChatColor.stripColor(bc.toString());
                                 ((Player)players[i]).spigot().sendMessage(bc);
                             }
                         }
